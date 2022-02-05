@@ -63,13 +63,21 @@ ex)border:1px solid red(두께,테두리,색깔)
 
 ### padding or margin
 ***
-padding과 margin은 1개,2개,3개의 값을 가질 수 있다   
+>padding과 margin은 1개,2개,3개의 값을 가질 수 있다   
 
 **padding:20px** ->top,bottom,right 모든 방향에 20px의 공간을 준다   
 
 **padding:20px 10px** -> 가로방향(top,bottom)에는 20px공간을, 세로방향(left,rigth)에는 10px 만큼의 공간
 
 **padding:10px 20px 30px 40px** ->첫번째부터 top,left,bottom,right순으로 공간을 적용
+
+### position 속성값
+***
+1.static: 웹사이트의 기본 속성값   
+2.relative: html태그가 있는 위치에서 left,right,top, bottom값을 통해 움직임   
+3.absolute: 부모 영역에서 left, right, top, bottom을 이용해 주어진 위치로 움직임   
+4.fixed: absolute와 비슷하지만 스크롤로 내려도 그 위치에 고정   
+5.sticky: relative와 비슷하지만 스크롤로 내리면 fixed처럼 그 위치에 고정
 
 
 
