@@ -73,11 +73,23 @@ ex)border:1px solid red(두께,테두리,색깔)
 
 ### position 속성값
 ***
-1.static: 웹사이트의 기본 속성값   
-2.relative: html태그가 있는 위치에서 left,right,top, bottom값을 통해 움직임   
-3.absolute: 부모 영역에서 left, right, top, bottom을 이용해 주어진 위치로 움직임   
-4.fixed: absolute와 비슷하지만 스크롤로 내려도 그 위치에 고정   
-5.sticky: relative와 비슷하지만 스크롤로 내리면 fixed처럼 그 위치에 고정
+* **static**: 웹사이트의 기본 속성값   
+* **relative**: html태그가 있는 위치에서 left,right,top, bottom값을 통해 움직임   
+* **absolute**: 부모 영역에서 left, right, top, bottom을 이용해 주어진 위치로 움직임   
+* **fixed**: absolute와 비슷하지만 스크롤로 내려도 그 위치에 고정   
+* **sticky**: relative와 비슷하지만 스크롤로 내리면 fixed처럼 그 위치에 고정
+
+### flexbox의 특징
+***
+* **display:flex**는 모든 요소를 가로로 둔다
+
+* **dispay:flex**는 부모한테 적용을 하고 자손을 컨트롤한다.
+
+* **justify-content** :가로로 요소들을 움직인다. (flex-start, center,flex-end,space-between,space-around 등의 값이 있음)
+
+* **align-items** : 세로로 요소들을 움직인다
+
+* **flex-direction**:column 가로로 정렬된 요소들을 세로로 바꾸고 justify-content는 세로로 align-items는 가로방향으로 바뀐다.
 
 
 
