@@ -79,17 +79,82 @@ ex)border:1px solid red(두께,테두리,색깔)
 * **fixed**: absolute와 비슷하지만 스크롤로 내려도 그 위치에 고정   
 * **sticky**: relative와 비슷하지만 스크롤로 내리면 fixed처럼 그 위치에 고정
 
-### flexbox의 특징
+### about- display: flex
 ***
-* **display:flex**는 모든 요소를 가로로 둔다
 
-* **dispay:flex**는 부모한테 적용을 하고 자손을 컨트롤한다.
+>**justify-content**   
+(이 CSS 속성은 요소들을 _가로선_ 상에서 정렬하며 다음의 값들을 인자로 받는다)
+ * flex-start: 요소들을 컨테이너의 왼쪽으로 정렬합니다.
+ * flex-end: 요소들을 컨테이너의 오른쪽으로 정렬합니다.
+ * center: 요소들을 컨테이너의 가운데로 정렬합니다.
+ * space-between: 요소들 사이에 동일한 간격을 둡니다.
+ * space-around: 요소들 주위에 동일한 간격을 둡니다.  
 
-* **justify-content** :가로로 요소들을 움직인다. (flex-start, center,flex-end,space-between,space-around 등의 값이 있음)
 
-* **align-items** : 세로로 요소들을 움직인다
+> **align-items**   
+(이 CSS 속성은 다음의 값들을 인자로 받아 요소들을 _세로선_ 상에서 정렬)
+ * flex-start: 요소들을 컨테이너의 꼭대기로 정렬합니다.
+ * flex-end: 요소들을 컨테이너의 바닥으로 정렬합니다.
+ * center: 요소들을 컨테이너의 세로선 상의 가운데로 정렬합니다.
+ * baseline: 요소들을 컨테이너의 시작 위치에 정렬합니다.
+ * stretch: 요소들을 컨테이너에 맞도록 늘립니다. 
 
-* **flex-direction**:column 가로로 정렬된 요소들을 세로로 바꾸고 justify-content는 세로로 align-items는 가로방향으로 바뀐다.
+>**flex-direction**   
+ (이 CSS 속성은 다음의 값들을 인자로 받아 컨테이너 안에서 요소들이 정렬해야 할 _방향_을 지정)
+ * row: 요소들을 텍스트의 방향과 동일하게 정렬합니다.
+ * row-reverse: 요소들을 텍스트의 반대 방향으로 정렬합니다.
+ * column: 요소들을 위에서 아래로 정렬합니다.
+ * column-reverse: 요소들을 아래에서 위로 정렬합니다.
+
+>** Flex의 방향이 column일 경우 justify-content의 방향이 세로로, align-items의 뱡향이 가로로 바뀝니다.**
+
+>**row** 컨테이너의 row나 column의 순서를 역으로 바꾸는 것만으로는 충분하지 않습니다.  order의 기본 값은 0이며, 양수나 음수로 바꿀 수 있습니다.
+
+>**align-self**
+ (개별 요소에 적용할 수 있는 또 다른 속성)
+ 이 속성은 align-items가 사용하는 값들을 인자로 받으며, 그 값들은 지정한 요소에만 적용됩니다.
+
+>**flex-wrap**
+ * nowrap: 모든 요소들을 한 줄에 정렬합니다.
+ * wrap: 요소들을 여러 줄에 걸쳐 정렬합니다.
+ * wrap-reverse: 요소들을 여러 줄에 걸쳐 반대로 정렬합니다.
+
+>**flex-flow**   
+ flex-direction과 flex-wrap이 자주 같이 사용되기 때문에, flex-flow가 이를 대신
+ 이 속성은 공백문자를 이용하여 두 속성의 값들을 인자로 받습니다.
+예를 들어, 요소들을 가로선 상의 여러줄에 걸쳐 정렬하기 위해 flex-flow: row wrap을 사용할 수 있습니다.
+
+>**align-content**   
+ (여러 줄 사이의 간격을 지정)
+ * flex-start: 여러 줄들을 컨테이너의 꼭대기에 정렬합니다.
+ * flex-end: 여러 줄들을 컨테이너의 바닥에 정렬합니다.
+ * center: 여러 줄들을 세로선 상의 가운데에 정렬합니다.
+ * space-between: 여러 줄들 사이에 동일한 간격을 둡니다.
+ * space-around: 여러 줄들 주위에 동일한 간격을 둡니다.
+ * stretch: 여러 줄들을 컨테이너에 맞도록 늘립니다.
+
+
+### 의미론적인 태그(semantic elements)
+***
+문서의 정보를 더 잘 표현하기 위해 부위에 맞게 의미를 부여하는 태그
+
+|< header >|  |
+|:---|:---:|
+|< nav >|     |
+|< section >|< aside > |
+|< article >|  |
+|< footer >|  |
+
+이외에도 < details > < figcaption > < figure > < main > < summary> < time >이 있음
+
+### 단위정리
+***
+* __px__ -절대적인 값. 다른 값이 영향을 받지 않음
+* __em__ -상위 요소 폰트크기 기준. 예를들어 폰트가 12px이면 1em은 12px. 화면사이즈에 따라 반응형웹을 만들 때 쓰기 좋음
+* __rem__ -em이랑 비슷함 하지만 HTML태그의 폰트크기 기준. 예를들어 내 자신이 12PX이라도 html이 20px이면 1rm은 20px
+* __%__ -상위요소 크기 기준으로 %를 따짐
+
+
 
 
 
