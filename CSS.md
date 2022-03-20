@@ -41,6 +41,31 @@
     padding-left:50px;
     }
 ````
+### Html태그에 스타일 주기
+1. class를 이용한 스타일 주기   
+```css
+.new-style{
+    color:red
+}
+```
+2. id를 이용  
+```css 
+#new-style {
+color:red;
+}
+```
+3. 직접적으로 스타일 주기 
+```css 
+ div {
+    color:red;
+}
+```      
+4. 복합 선택자
+// p.newstyle p태그에 있는 class가 new-style인 태그만 선택   
+// div. new-style div태그 아래에 잇는 모든 자손들 중 스타일이 new-style을 가진 태그만    
+// span>.new-style span 태그 바로 밑에 직접 적인 자식중에서 new-style을 가진 태그를 선택       
+
+
 ### learn more(스타일정리)
 ***
 * float -이미지 또는 html태그 _요소를 배치하는데 쓰임_. float를 쓰게되면 해당 영역의 사이즈가 float을 포함하고 있는 컨텐츠 영역 만큼 줄어듬
