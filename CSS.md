@@ -180,6 +180,28 @@ ex)border:1px solid red(두께,테두리,색깔)
 * __%__ -상위요소 크기 기준으로 %를 따짐
 
 
+### box-sizing:norder-box
+***
+>padding에 상관없이 box의 크기를 변경하고 싶지 않을경우 사용    
+즉, 박스의 크기를 유지한채 paddig을 줄 수 있다
+
+보통    
+position:ficxed;   
+width:100%:;    
+box-sizing: border-box;    
+와 같이 사용
+
+### z-index
+***
+default: 0    
+숫자가 작을수록 낮은 layer, 클수록 위의 layer    
+fixed, absolute position에 이용 가능.
+
+
+
+
+
+
 
 
 
