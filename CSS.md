@@ -62,12 +62,14 @@ color:red;
 }
 ```      
 4. 복합 선택자
-// p.newstyle p태그에 있는 class가 new-style인 태그만 선택   
-// div. new-style div태그 아래에 잇는 모든 자손들 중 스타일이 new-style을 가진 태그만    
-// span>.new-style span 태그 바로 밑에 직접 적인 자식중에서 new-style을 가진 태그를 선택       
+* div span { } :   div 부모태그 밑의 모든 span 자식태그들을 지정한다.
+* div > span { } :   div 부모태그 바로 밑의 span 자식태그를 지정한다.(바로 밑 자식에게만 스타일을 적용)
+* div + span { } :   div의 바로 아래있는 형제 span 선택.(형제 자식에게 스타일을 적용)
+* div~span{ }:    div와 같은 부모를 공유하는 모든 span 선택(바로 뒤에 오는 형제 관계가 아닌 tag에도 스타일을 적용)
+    
 
 
-### learn more(스타일정리)
+### css style
 ***
 * float -이미지 또는 html태그 _요소를 배치하는데 쓰임_. float를 쓰게되면 해당 영역의 사이즈가 float을 포함하고 있는 컨텐츠 영역 만큼 줄어듬
 
@@ -86,6 +88,19 @@ ex)border:1px solid red(두께,테두리,색깔)
 * postion -HTML태그의 위치시키는 방식 지정
 * font-family -폰트 스타일
 * box-shadow -박스뒤그림자
+* opacity -투명도
+* z-index -숫자가 작을수록 낮은 layer, 클수록 위의 layer    
+fixed, absolute position에 이용 가능.
+default: 0    
+*  box-sizing:border-box - padding에 상관없이 box의 크기를 변경하고 싶지 않을경우 사용    
+즉, 박스의 크기를 유지한채 paddig을 줄 수 있다  
+   * 보통    
+      position:ficxed;   
+       width:100%:;    
+       box-sizing: border-box;    
+       와 같이 사용
+
+
 
 ### padding or margin
 ***
@@ -115,7 +130,7 @@ position:relative; 를 해주면 부모가 된다.
  
 * **sticky**: relative와 비슷하지만 스크롤로 내리면 fixed처럼 그 위치에 고정
 
-### about- display: flex
+### display: flex
 ***
 **flex-box**   
 자식에게 명시하지 않고 부모 엘리먼트에만 명시   
@@ -199,22 +214,6 @@ flex-wrap:
 * __%__ -상위요소 크기 기준으로 %를 따짐
 
 
-### box-sizing:border-box
-***
->padding에 상관없이 box의 크기를 변경하고 싶지 않을경우 사용    
-즉, 박스의 크기를 유지한채 paddig을 줄 수 있다
-
-보통    
-position:ficxed;   
-width:100%:;    
-box-sizing: border-box;    
-와 같이 사용
-
-### z-index
-***
-default: 0    
-숫자가 작을수록 낮은 layer, 클수록 위의 layer    
-fixed, absolute position에 이용 가능.
 
 ### pseudo selectors  
 ***
@@ -226,12 +225,6 @@ background-color: tomato;
 }
 ```
 
-### combinator  
-***
-* div span { } :   div 부모태그 밑의 모든 span 자식태그들을 지정한다.
-* div > span { } :   div 부모태그 바로 밑의 span 자식태그를 지정한다.(바로 밑 자식에게만 스타일을 적용)
-* div + span { } :   div의 바로 아래있는 형제 span 선택.(형제 자식에게 스타일을 적용)
-* div~span{ }:    div와 같은 부모를 공유하는 모든 span 선택(바로 뒤에 오는 형제 관계가 아닌 tag에도 스타일을 적용)
   
 
 ### status(active,focus,hover,over,visited,focus-withn)
