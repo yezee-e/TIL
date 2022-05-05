@@ -203,6 +203,10 @@ fixed, absolute position에 이용 가능.
 
 
 
+ >@media query는 코드의 조건을 추가 할 수 있는 방법이다.
+ - media query도 {} 중괄호로 여닫는다. 그 안에 element에 속성을 적용시켜야 한다.   
+ - media query는 "and"를 써서 연결된다.   
+ - "min-width" 뿐만 아니라, "min-device-width"도 있다.(-device-width는 오직 핸드폰에만 적용된다.)
 
 
 
