@@ -1,5 +1,5 @@
 # css
-***
+
 * class를 이용한 스타일주기
 * id를 이용
 * 직접적으로 스타일 주기
@@ -42,6 +42,7 @@
     }
 ````
 ### Html태그에 스타일 주기
+***
 1. class를 이용한 스타일 주기   
 ```css
 .new-style{
@@ -90,7 +91,7 @@ ex)border:1px solid red(두께,테두리,색깔)
 ***
 >padding과 margin은 1개,2개,3개의 값을 가질 수 있다   
 
-**padding:20px** ->top,bottom,right 모든 방향에 20px의 공간을 준다   
+**padding:20px** ->모든 방향에 20px의 공간을 준다   
 
 **padding:20px 10px** -> 가로방향(top,bottom)에는 20px공간을, 세로방향(left,rigth)에는 10px 만큼의 공간
 
@@ -98,14 +99,32 @@ ex)border:1px solid red(두께,테두리,색깔)
 
 ### position 속성값
 ***
-* **static**: 웹사이트의 기본 속성값   
-* **relative**: html태그가 있는 위치에서 left,right,top, bottom값을 통해 움직임   
-* **absolute**: 부모 영역에서 left, right, top, bottom을 이용해 주어진 위치로 움직임   
-* **fixed**: absolute와 비슷하지만 스크롤로 내려도 그 위치에 고정   
+
+* **relative**: 있는자리 기준에서 옮김    (html태그가 있는 위치에서 left,right,top, bottom값을 통해 움직임)
+* **absolute**: 부모 절대값 기준으로 옮김( 부모 영역에서 left, right, top, bottom을 이용해 주어진 위치로 움직임)   
+ 가장 가까운 releative부모를 기준으로 이동
+position:relative; 를 해주면 부모가 된다.
+없으면 body.
+
+* **static**:  left.top 등을 이해하지 못함 즉, 자기 자리만 지킴(브라우저의 기본속성)
+
+* **fixed**: absolute와 비슷하지만 스크롤로 내려도 그 위치에 고정.  무조건 브라우저 창 기준(따라 내려오는것 처럼 보임)   
+초기 위치에 고정. 다른 레이어상에서 자리잡음 따라서 top,bottom,right,left사용시 margin과 초기 위치등이 무시되고 명령한 위치에 자리
+즉, potion:flex는 새로운 layer를 만듦
+
+ 
 * **sticky**: relative와 비슷하지만 스크롤로 내리면 fixed처럼 그 위치에 고정
 
 ### about- display: flex
 ***
+**flex-box**   
+자식에게 명시하지 않고 부모 엘리먼트에만 명시   
+div의 부모를 display:flex로 만든다   
+justify-content:주축은 수쳥(row)   
+align-items:교차축은 수직(colum)   
+flex-direction:flex의 방향을 명시   
+flex-wrap:
+
 
 >**justify-content**   
 (이 CSS 속성은 요소들을 _가로선_ 상에서 정렬하며 다음의 값들을 인자로 받는다)
@@ -197,16 +216,143 @@ default: 0
 숫자가 작을수록 낮은 layer, 클수록 위의 layer    
 fixed, absolute position에 이용 가능.
 
-## 확인
+### pseudo selectors  
+***
+좀더 세부적으로 엘리먼트를 선택해 주는 것
+선택의 복잡한 과정을 pseudo selector로 가능함
+```css
+div:first-child {
+background-color: tomato;
+}
+```
+
+### combinator  
+***
+* div span { } :   div 부모태그 밑의 모든 span 자식태그들을 지정한다.
+* div > span { } :   div 부모태그 바로 밑의 span 자식태그를 지정한다.(바로 밑 자식에게만 스타일을 적용)
+* div + span { } :   div의 바로 아래있는 형제 span 선택.(형제 자식에게 스타일을 적용)
+* div~span{ }:    div와 같은 부모를 공유하는 모든 span 선택(바로 뒤에 오는 형제 관계가 아닌 tag에도 스타일을 적용)
+  
+
+### status(active,focus,hover,over,visited,focus-withn)
+***
+조건을 나열해 여러 상황을 설정할 수 있음.
+EX> form:hover input:focus{ }
+<br/>
+
+* **active** 해당 요소를 마우스로 "클릭"했을 때 효과를 적용
+* **hover** 마우스가 해당 요소 "위를 지나갈 때" 효과를 적용
+* **focus** 키보드로 선택되었을 때 효과를 적용
+* **visited** "링크"에만 적용. 방문한 사이트일 경우에 효과를 적용
+* **focus-within**  부모 요소에게 적용. 자신의 자식 요소 중 하나가 focused되었을 때 효과를 적용
+
+### pseudo element
+***
+* ::placeholder placehoder만을 꾸밀때 사용
+* ::selection 드래그 했을때 css
+* ::first-letter 앞 글자에 css
+* ::first-line 첫 줄 css
+
+### color system
+***
+1) hex code
+: #2ecc71와 같은 색상 코드   
+2) rgb
+: 각각 red, green, blue를 의미   
+가령, rgb(0,140,200)의 경우엔 red 값이 0, green 값이 140, blue 값이 200이라고 이해할 수 있습니다.   
+3) rgba
+: 2와 동일하지만 a가 포함된 형태. 'a(alpha)'는 투명도를 담당
+0(투명)~1(불투명) 사이의 값으로 조절 
+###  variable(custom property)
+***
+:root 라는 엘리먼트에 변수를 추가하는 것   
+:root은 기본적으로 모든 document의 뿌리가 되는 것   
+```css
+:root{
+--main-color
+}
+var(--main-color)
+```
+### transition
+***
+어떤 상태에서 다른 상태로의 변화! 를 보내주는 애니매이션   
+transition 값은 태그의 root(근원, 기본css 태그) 에 넣는 것이고    
+transition 이 적용되는 항목은 “어떤 속성(attribute 조건)일 때 어떻게 변할지 따로” 적는다.   
+예) “김 ㅇㅇ씨 링크 글씨색을 마우스 갖다대면 바뀌게 할 수 있어요?
+좀 부드럽게?”
+```css
+a {
+color: white;
+transition: all 1s ease-in-out
+
+a:hover{
+color: tomato;
+
+```
+=기본값(root)에선 링크의 폰트컬러가 화이트
+마우스를 갖다대면 폰트컬러가 1초에 걸쳐 토마토색으로 변한다   
+<br/>
+"ease-in function"은 브라우저에게 애니메이션이 어떻게 변할지 말해주는 기능이다.
+ → default로 갖고 있는 것은 linear, ease-in, ease-in-out, ease-out, ease 
 
 
+### transformation
+***
+transformation은 box element를 변형시키지 않는다.   
+즉, 옆에 sibling들에게 영향을 끼치지 않는다.
+margin, padding이 적용되지 않는다. 일종의 3D transformation이기 때문   
+transform과 transition을 조합하면 더 역동적인 애니메이션을 만들 수 있다.   
+ CSS 3D는 GPU로 돌아가므로, 3D 작업을 할 수 있다.
+
+### animations
+***
+* 애니메이션 코드를 작성 한 후 적용을 원하는 대상 요소에서
+animation: animationname 5s ease-in-out infinite;를 넣어 실행시킬 수 있다.  
+
+* from to 말고, 1,2,3,4,5...10 혹은 0% 25% 50% 75% 100% 같이 여러 단계로 나뉘어 애니매이션을 만들 수 있다.
+
+```CSS
+@keyframs 에니메이션이름{
+from {
+transform: rotatex(0);
+}
+to {
+transform: rotatex(360deg);
+}
+}
+```
+OR
+```CSS
+@keyframs 에니메이션이름{
+0% {
+transform: rotatex(0);
+}
+50% {
+transform: rotatex(180deg) translateY(100px);
+}
+100%{
+transform:rotex(0);
+ }
+}
+```
+
+### media queries
+***
+```CSS
+ @media screen and (min-width: npx) and (max-width:npx) and (orientation : landscape혹은portrait) {
+div{ backgound-color:wheat;}
+}
+```
+ 스크린 사이즈에 따라서 property 조정 가능함. orientation으로 가로 세로 감지 가능   
+ <br/>
+
+ @media print를 이용하면 브라우저 프린트 화면에서의 속성을 변경할 수 있다.
 
 
-
- >@media query는 코드의 조건을 추가 할 수 있는 방법이다.
- - media query도 {} 중괄호로 여닫는다. 그 안에 element에 속성을 적용시켜야 한다.   
- - media query는 "and"를 써서 연결된다.   
- - "min-width" 뿐만 아니라, "min-device-width"도 있다.(-device-width는 오직 핸드폰에만 적용된다.)
+ @media query는 코드의 조건을 추가 할 수 있는 방법이다.
+- media query도 {} 중괄호로 여닫는다. 그 안에 element에 속성을 적용시켜야 한다.   
+- media query는 "and"를 써서 연결된다.   
+- "min-width" 뿐만 아니라, "min-device-width"도 있다.(-device-width는 오직 핸드폰에만 적용된다.)
 
 
 
