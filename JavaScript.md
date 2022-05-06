@@ -1,10 +1,12 @@
-## 변수의 선언 방식
+### 변수의 선언 방식(Variables)
 ***
-**let:** 변수를 선언하고 재할당도 가능 언제든 값을 바꿀 수 있음   
-**const:** 변수에 한번 값을 할당하면 다시 값을 바꿀 수 없음   
-**var:** let의 옛날버전(let과 작동원리는 같으나 호이스팅과 같은 문제가 있음)
+**let:** 변수를 선언하고 재할당도 가능 언제든 값을 바꿀 수 있음(재선언금지, 재할당가능)    
+**const:** 변수에 한번 값을 할당하면 다시 값을 바꿀 수 없음(재선언금지, 재할당 금지)   
+**var:** let의 옛날버전(let과 작동원리는 같으나 호이스팅과 같은 문제가 있음)(재선언가능,재할당가능)
 
-## 자료형과 연산자
+ <br/>
+
+### 자료형과 연산자
 ***
 **자료형**🔍
 * string- 문자열 타입이라고도 한다. ""큰따옴표나 ''작은따옴표 안에 들어가 있는 값을 string타입이라고함
@@ -16,10 +18,18 @@
 * 기본연산자(- + * / % ++ --)
 * 관계연산자(== === != > < >= <=)
 * 논리연산자(&& || !)
+ 
+**그외**
+* undefined - 값이 정의되지 않음(변수는 선언했지만 값을 할당하지는 않음)   
+   > ex-박스만 만들어 놓은 상태
+* null - 값이 없음(변수에 null이 할당된다 즉, 정의되었지만 비어있음)
+    > ex-박스 만들고 아무것도 안넣고 포장
+* NaN -Not a Number(숫자가 아님)
+ <br/>
 
-## 배열
+### 배열(Arrays)
 ***
-**배열은** -여러개의 데이터를 하나의 변수에 담고 싶을때 사용한다   
+**배열은[ ]** -여러개의 데이터를 하나의 변수에 담고 싶을때 사용한다   
 
 **인덱스** -배열에 들어가있는 아이템에는 모두 인덱스 번호가 부여된다.   
 시작점은 0부터 부여가 된다   
@@ -46,6 +56,9 @@ console.log(array)// ["apple","grape","mango"] 가 나옴
 3)기존의 배열이 잘림
 * length: 배열 함수는 아니지만 배열의 크기를 리턴해주는 속성
 
+<br/>
+
+예제)
 ```js
 let fruit=["banana","apple","grape","mango"]
 console.log(fruit[3])//인덱스3번째(mango)리턴
@@ -65,13 +78,17 @@ console.log(fruit)//banana,apple,mango
 let array = ["apple","banana","mango"]
 console.log(array.length) // 3이 나옴, 배열에 아이템이 총 3개라서
 ```
+ <br/>
 
-## 객체
+### 객체(Object)
 ***
 관련있는 정보를 묶어서 하나의 데이터를 표현하기 위해 나옴
 
 >arry는 [] ->사용   
  객체는 {} ->사용
+
+ > arry는 ->설명이 필요하지 않은 데이터 리스트
+  object->설명이 필요한 정보가 담긴 데이터 리스트
 
 예시1)
 ```js
@@ -96,8 +113,83 @@ console.log("첫번째 환자는:",patientlist[0])
 console.log("첫번째 환자의 나이는?",patientlist[0].age)
 console.log("두번째 환자의 이름은?",patientlist[1].name)
 ```
+ <br/>
 
-## IF문
+ ### 함수(Function)
+ ***
+ ```js
+ function 선언 :   
+function 함수명() {    
+실행코드   
+}
+```
+funtion 실행 : 함수명();  
+
+argument(인수)를 보내야 하는데 인수란 함수를 실행하는 동안 어떤 정보를 함수에게 보낼 수 있는 방법이다.
+
+<br/>
+
+1) function은 괄호 안의 매개변수에서 argument를 받아들일 수 있다
+
+```js
+function sayHello(nameOfPerson) {
+console.log("my name is"+nameOfPerson);
+}
+
+sayHello("nico") //my name is nico
+sayHello("dal") //my name is dal
+sayHello("lynn")] //my name is lynn
+
+ // nameOfPerson은 "nico" "dal" "lynn" 을 인수로 받음
+```
+
+2)object 안에서 매개변수가 argument를 받는 방식
+```js
+const player = {
+name : function(Name) {
+console.log("Your Name is " + Name + " 입니다.")
+} ,
+sayHello : function(Age) {
+console.log("Your age is " + Age + " 입니다." )
+}
+}
+
+player.name("james") //Your Name is james 입니다.
+player.sayHello(14) //Your age is 14 입니다.
+```
+
+```js
+function add(a,b){
+    console.log(a+b);
+}
+
+add(3,4) //함수부르기
+
+const coculator={
+    add:function(a,b){
+        console.log(a+b);
+    },
+
+}
+
+coculator.add(2,3) //객체에서 함수 부르기
+
+```
+
+* returns 
+```js
+const age =96;
+function calculateKrAge(ageOfForeigner){
+return ageOfForeigner+2 ;
+}
+
+const KrAge = calculateKrAge(age)
+
+console.log(KrAge) //98
+```
+
+
+### IF문
 * 범위를 작은 것 부터 큰거 순으로 두는 것이 좋음
 * If 문의 생김새
 if(조건){   
@@ -156,8 +248,9 @@ let b ="1"
 console.log(a==b) //true
 console.log(a===b) //false
 ```
+ <br/>
 
-## switch문과 삼항 연산식
+### switch문과 삼항 연산식
 ***
 **switch**   
 * 조금 더 간결하고 의미가 명확해 보인다는 장점이 있음
@@ -177,6 +270,7 @@ switch(food){
         console.log("메뉴에 없는 음식입니다")
 }
 ```
+ <br/>
 
 **삼항연산자**
 * if문을 간단하게 표현할 수 있다.
@@ -247,10 +341,11 @@ if(90<=score && score<=100){
 }
 console.log(grade)
 ```
+ <br/>
 
 ### HTML in javascript
 ***
-* **getElementsByClassName( )**은 많은 element를 한번에 가지고 와야하는 경우에 사용(arry 반환)   
+* **getElementsByClassName( )** 은 많은 element를 한번에 가지고 와야하는 경우에 사용(arry 반환)   
 * **getElementsByTagName( )**  태그이름을 통해 element를 가져옴(arry 반환)
 * **querySelector( )** element를 css방식으로 검색 
 
@@ -298,6 +393,7 @@ js에서 바로 사용할수있는 eventListener
 * localStorage.removeItem("key") // removeItem을 활용하면 loacal storage에 저장된 정보를 삭제
 * Date.now( ) 밀리초(1000분의 1초)를 주는 함수-->랜덤숫자가 필요할때 사용
 
+ <br/>
 
 ### time founction
 ***
@@ -309,6 +405,7 @@ ex)
 단 바로 실행되지 않고 1초 후 첫 시작이 되고 계속 1초마다 반복된다.   
  **setTimeout(sayHello, 1000);** 1초 기다렸다가 한번만 실행.
 
+ <br/>
 
 ### date object
 ***
@@ -322,6 +419,8 @@ function getClock() {
 ```
 ----->Date().toLocaleTimeString( ) //현시각나타내는함수
 
+ <br/>
+
 ### padStart, padEnd함수
 ***
 -> string에 쓸수있으며 string을 보다 길게 만들어야 할때 사용    
@@ -329,6 +428,8 @@ function getClock() {
    padEnd(maxlength, fillstring) 뒤쪽에 문자를 추가
 
 ex) "Hello".padStart(10,"x")  // xxxxxHello
+
+ <br/>
 
 ### type change
 ***
@@ -341,6 +442,8 @@ String(new Date( ).getHours( )) // "19"
 * **parseInt**   
 문자을 숫자로 바꾸는 방법
 
+ <br/>
+
 ### Math 객체기능
 ***
    * Math.round( ) 소수점 반올림
@@ -349,12 +452,17 @@ String(new Date( ).getHours( )) // "19"
 ```js
 const todayQuote=quotes[Math.floor(Math.random()*quotes.length)] 
 ```
+
+ <br/>
+
 ### js에서 html 요소를 생성
 ***
 ```js
   document.creatElement("")
   ```
    예를 들어, document.creatElement("img")일 경우 html내에 img태그를 생성
+
+ <br/>   
 
 ### more founction
 ***
@@ -391,6 +499,8 @@ function deleteToDo(event){
 2)event안의 target안의 parentElement를 이용하여 버튼을 눌려진 li에 대한 정보를 받는다   
 3)지정된 버튼을 누르면 remove( ) 함수를 이용하여 제거
 
+ <br/>
+
 ### localstorage
 ***
 localstorage는 안타깝게도 배열 저장 못함 오직 "텍스트"만 저장가능   
@@ -403,6 +513,8 @@ localstorage는 안타깝게도 배열 저장 못함 오직 "텍스트"만 저�
 // local storage에 array로 저장이 안되기 때문에 JSON.stringify로 array처럼 생긴 string으로 저장한 후 다시 JSON.parse 이용해 array로 꺼내는 방법   
 
 array.foreach는 받아온 array를 for 반복문 없이 item 하나씩 function에 넣을 수 있는 신기한 녀석
+
+ <br/>
 
 ### arrow function
 ***
@@ -429,6 +541,9 @@ if(arryToDos !== null){
     parsedToDos.forEeach((item) => console.log("lala", item))
    }
 ```
+
+ <br/>
+
 ### fliter
 ***
 "배열"에서 지우고 싶은 것이 있을때 사용(지우고 싶은것을 지우는 것이 아닌 필요없는 것을 배제하고 들고옴으로서 새 배열을 만듬. 즉, filter function은 새 배열을 만듬)    
