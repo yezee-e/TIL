@@ -86,5 +86,5 @@ console.log(event);
 * **태그자동완성** div class="name"은 div.name으로
 div id="id"는 div#id
 * **태그 많이 만들기** ex. div를 10개 -> div*10
-*  comment 처리  작성후 Ctrl + / 
+*  comment 처리  작성후 Ctrl + / 윈도우키 + .
 
