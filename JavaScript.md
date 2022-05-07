@@ -117,9 +117,9 @@ console.log("두번째 환자의 이름은?",patientlist[1].name)
 
  ### 함수(Function)
  ***
- ```js
- function 선언 :   
-function 함수명() {    
+ function 선언 
+ ```js 
+ function 함수명() {    
 실행코드   
 }
 ```
@@ -129,7 +129,7 @@ argument(인수)를 보내야 하는데 인수란 함수를 실행하는 동안 
 
 <br/>
 
-1) function은 괄호 안의 매개변수에서 argument를 받아들일 수 있다
+1)function은 괄호 안의 매개변수에서 argument를 받아들일 수 있다
 
 ```js
 function sayHello(nameOfPerson) {
@@ -358,11 +358,16 @@ console.log(grade)
 * **document.getElementsByTagName( )**  태그이름을 통해 element를 가져옴(arry 반환)
 * **document.querySelector( )** element를 css방식으로 검색(조건에 부합하는 첫번째 것만 반환)
 * **document.querySelectorAll( )** element를 css방식으로 검색 (조건에 맞는 모두 반환)
+* **document.creatElement("")** javascript에서 html element를 생성(js에서 element를 만들어서 html에 전달)
 
-```js
-  document.creatElement("")
-  ```
    예를 들어, document.creatElement("img")일 경우 html내에 img태그를 생성
+   ```js
+   const images =["0.jep","1.jpeg","2.jpeg"]; // 사진배열
+   const chosenImage = images[Math.floor{Math.random()*image.length}] //램덤이미지
+   const bgImage =document.createElement("img") //js에 element생성
+   bgImage.src =`img/${chosenImage}` // 
+   document.body.appendChild(bgImage) //body에 html을 추가
+  ```
 
  <br/>
 
@@ -401,7 +406,7 @@ console.log(event);
 **add**라는 function은 명시한 class name을 추가      
 **toggle**은 토큰이 존재하면 토큰제거,토큰존재 하지않으면 토큰 추가   
 
-* 
+
 ### local storage
 ***
 * localStorage.setItem( "key" ,"value"  ) //setltem을 활용하면 local storage에 정보를 저장
@@ -409,6 +414,20 @@ console.log(event);
 * localStorage.removeItem("key") // removeItem을 활용하면 loacal storage에 저장된 정보를 삭제
 * Date.now( ) 밀리초(1000분의 1초)를 주는 함수-->랜덤숫자가 필요할때 사용
 
+<br/>
+
+localstorage는 안타깝게도 배열 저장 못함 오직 "텍스트"만 저장가능   
+* JSON.STRINGIFY( ) = 변수 등을 문자열로 바꿈, 
+* JSON.PARSE( )= 문자열을 Arrau(배열)으로 바꿈
+
+//결론은 parse로 배열을 만든다음 forEach를 사용하여 각각의 배열item에 대해 function을 실행시킴   
+
+// local storage에 array로 저장이 안되기 때문에 JSON.stringify로 array처럼 생긴 string으로 저장한 후 다시 JSON.parse 이용해 array로 꺼내는 방법   
+ <br/>
+
+### forEach()
+***
+array.foreach는 arry에 있는 각각의 item에 대해서 function을 실행하게 해줌
  <br/>
 
  ### learn fuctions
@@ -427,10 +446,6 @@ ex)
 단 바로 실행되지 않고 1초 후 첫 시작이 되고 계속 1초마다 반복된다.   
  **setTimeout(sayHello, 1000);** 1초 기다렸다가 한번만 실행.
 
- <br/>
-
-#### 📌date object
-
  //호출하는 당시의 현재 날짜와 시간을 알려줌
 setInterval(getClock,1000)
 ```js
@@ -439,6 +454,9 @@ function getClock() {
   clock.innerText=`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
  }
 ```
+
+* Date.now() 밀리초(1000분의1초)를 주는 함수-> 이 함수를 사용하여 램덤숫자 만듬
+
 ----->Date().toLocaleTimeString( ) //현시각나타내는함수
 
  <br/>
@@ -462,12 +480,12 @@ new Date( ),getHours( )  // 19
 String(new Date( ).getHours( )) // "19"
 
 * **parseInt**   
-문자를 숫자로 바꾸는 방법
+문자열을 숫자로 바꾸는 방법 
 
  <br/>
 
 #### 📌Math 객체기능
-
+   * math.random() 램덤한 숫자 생성
    * Math.round( ) 소수점 반올림
    * Math.ceil( ) 숫자를 천장(ceil)까지 높여주는 것. 즉, 소수점이있으면 무조건 올림하여 값이 정수로 나옴
    * Math.floor( ) 숫자를 바닥(floor)까지 낮여주는 것. 즉, 소수점이 있으면 무조건 없애서 값이 정수로 나옴
@@ -498,13 +516,14 @@ li.appenChild(span)
 // li안에 span태그
 ```
 
-### deleting todo
+### addeventlister의 정보받기
 ***
+클릭한 버튼 좌표 찾기 ->event.target
 ````js
 button.addEventListener("click", deleteToDo)
 
 function deleteToDo(event){
-    const li=event.target.parentElement;
+    const li=event.target.parentElement; 
     li.remove()
  }
 ````
@@ -514,20 +533,6 @@ function deleteToDo(event){
 
  <br/>
 
-### localstorage
-***
-localstorage는 안타깝게도 배열 저장 못함 오직 "텍스트"만 저장가능   
-* JSON.STRINGIFY( ) = 변수 등을 문자열로 바꿈, 
-* JSON.PARSE( )= 문자열을 JSON으로 바꿈
-* .forEach( )는 arry에 있는 각각의 item에 대해서 function을 실행하게 해줌 
-
-//결론은 parse로 배열을 만든다음 forEach를 사용하여 각각의 배열item에 대해 function을 실행시킴   
-
-// local storage에 array로 저장이 안되기 때문에 JSON.stringify로 array처럼 생긴 string으로 저장한 후 다시 JSON.parse 이용해 array로 꺼내는 방법   
-
-array.foreach는 받아온 array를 for 반복문 없이 item 하나씩 function에 넣을 수 있는 신기한 녀석
-
- <br/>
 
 ### arrow function
 ***
@@ -569,6 +574,13 @@ const arr =[1223, 5443, 100, 345, 1200]
 function sexyfliter(num){ return num<=1000}
 arr.fliter(sexyfliter)  // [100, 345]
 ```
+arrow function을 사용하여 filter function쓰기
+```js
+const arr =[1,2,3,4]
+arr.filter(item=>item > 2) /[3,4]
+```
+
+<br/>
 
 ### navigator function
 ***
@@ -581,8 +593,7 @@ const API_KEY="abcf19118a589b2cbbbf87bf809fa89d"
 function onGeoOk(position){
     const lat = position.coords.latitude
     const lon = position.coords.longitude
-    console.log(lat,lon);
-    const url =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}=${API_KEY}`
+    const url =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}=${API_KEY}` //세 변수는 반드시 필요:api key, lon, lat
    fetch(url)
   .then(response => response.json( ))
   .then(data => {
@@ -590,12 +601,17 @@ function onGeoOk(position){
    weather.innerText =data.weather[0].main})
 }
 
-function onGeoError(){ }
-navigator.geolocation.getCurrentPosition(onGeoOk,onGeoError)
+function onGeoError(){ 
+  alert("can't find you. No weather for you.")
+}
+
+navigator.geolocation.getCurrentPosition(onGeoOk,onGeoError) 
 
 ```
 
- api 만들기 https://openweathermap.org/       
+ Weather api 만들기 https://openweathermap.org/       
 세 변수는 반드시 필요:api key, lon, lat
-fetch로 url부르기(실제로 url에 갈 필요없이 js가 대신 url을 부르는것)
+fetch(url) : 실제로 url에 갈 필요없이 js가 대신 url을 호출
+.then(response => response.json())
+.then((data)=> {}) //정보 불러오기
 
