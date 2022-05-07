@@ -188,8 +188,11 @@ const KrAge = calculateKrAge(age)
 console.log(KrAge) //98
 ```
 
+### 조건문(conditionals)
+***
+####  📌IF문
 
-### IF문
+
 * 범위를 작은 것 부터 큰거 순으로 두는 것이 좋음
 * If 문의 생김새
 if(조건){   
@@ -250,12 +253,12 @@ console.log(a===b) //false
 ```
  <br/>
 
-### switch문과 삼항 연산식
-***
+#### 📌switch문과 삼항 연산식
+
 **switch**   
 * 조금 더 간결하고 의미가 명확해 보인다는 장점이 있음
 * case가 값으로 딱 정해진 경우에만 사용가능
-* 조건이 비교식일 경우 사용 불가
+* 조건이 비교식일 경우 사용 불가   
 예시)
 ```js
 let food = '햄버거'
@@ -345,9 +348,23 @@ console.log(grade)
 
 ### HTML in javascript
 ***
-* **getElementsByClassName( )** 은 많은 element를 한번에 가지고 와야하는 경우에 사용(arry 반환)   
-* **getElementsByTagName( )**  태그이름을 통해 element를 가져옴(arry 반환)
-* **querySelector( )** element를 css방식으로 검색 
+**document** 는 HTML과 상호작용을 가능하게 해주는 객체로 js에서 html파일을 불러올 수 있도록 도와준다 
+
+아래는 document의 함수들이다
+
+* **document.getElementById( )** html에 있는 id를 불러올 수 있다.
+
+* **document.getElementsByClassName( )** 은 많은 element를 한번에 가지고 와야하는 경우에 사용(arry 반환)   
+* **document.getElementsByTagName( )**  태그이름을 통해 element를 가져옴(arry 반환)
+* **document.querySelector( )** element를 css방식으로 검색(조건에 부합하는 첫번째 것만 반환)
+* **document.querySelectorAll( )** element를 css방식으로 검색 (조건에 맞는 모두 반환)
+
+```js
+  document.creatElement("")
+  ```
+   예를 들어, document.creatElement("img")일 경우 html내에 img태그를 생성
+
+ <br/>
 
 ### events
 ***
@@ -360,32 +377,31 @@ removeEventListener을 통해서 event listener을 제거할수있기 때문이�
 onClick="함수( )"
 js에서 바로 사용할수있는 eventListener
 
-### css in javascrpit(1)
+* preventDefault()함수를 추가함으로서 브라우저의 기본동작을 막을 수 있다
+```js
+function onLoginSubmit(event){
+event.preventDefault(); 
+// 브라우저가 기본 동작을 실행하지 못하게 막기 
+// event object는 preventDefault함수를 기본적으로 갖고 있음
+console.log(event);
+}
+```
+### css in javascrpit
 ***
-**classList** 우리가 class들의 목록으로 작업할수 있게끔 허용해준다.   
+* **classList** 우리가 class들의 목록으로 작업할수 있게끔 허용해준다.   
+* **className**은 이전 calss를 상관하지않고 모든걸 교체해 버린다.   
 
-**className**은 이전 calss를 상관하지않고 모든걸 교체해 버린다.   
 -> js에서 classList를 사용하는거는 HTML element가 가지고있는 또하나의 요소 사용하는 것이다.   
 -> element의 class내용물을 조작하는 것을 허용한다는 뜻
 
 <br/>
 
-**contains**은 우리가 명시한 class가 HTML element의 class에 포함되어 있는지 말해준다
+**contains**은 우리가 명시한 class가 HTML element의 class에 포함되어 있는지 말해준다   
+**remove**라는 function은 명시한 class name을 제거         
+**add**라는 function은 명시한 class name을 추가      
+**toggle**은 토큰이 존재하면 토큰제거,토큰존재 하지않으면 토큰 추가   
 
-**remove**라는 function은 명시한 class name을 제거하고    
-
-**add**라는 function은 명시한 class name을 추가   
-
-**toggle**은 토큰이 존재하면 토큰제거,토큰존재 하지않으면 토큰 추가
-
-### css in javascrpit(2)
-***
-
-* isNaNnumber -구별을 판별
-
-* visibility:hidden - 공간은 그대로 두고 보이지만 않는것   
-   display:none - 잡아둔 공간도 사라짐
-
+* 
 ### local storage
 ***
 * localStorage.setItem( "key" ,"value"  ) //setltem을 활용하면 local storage에 정보를 저장
@@ -395,8 +411,14 @@ js에서 바로 사용할수있는 eventListener
 
  <br/>
 
-### time founction
+ ### learn fuctions
 ***
+
+#### 📌isNaN():NaN인지 판별하는 방법, boolean으로 알려준다
+
+
+#### 📌time founction
+
 * setInterval(함수,시간) funtion을 정한 시간마다 실행시키는 방법(시간단위는 ms단위)//계속반복   
 * setTimeout(함수, 시간) funtion을 정한 시간에 실행//한번만실행
 
@@ -407,8 +429,8 @@ ex)
 
  <br/>
 
-### date object
-***
+#### 📌date object
+
  //호출하는 당시의 현재 날짜와 시간을 알려줌
 setInterval(getClock,1000)
 ```js
@@ -421,8 +443,8 @@ function getClock() {
 
  <br/>
 
-### padStart, padEnd함수
-***
+#### 📌padStart, padEnd함수
+
 -> string에 쓸수있으며 string을 보다 길게 만들어야 할때 사용    
    padStart(maxlength, fillstring)앞쪽에 문자를 추가   
    padEnd(maxlength, fillstring) 뒤쪽에 문자를 추가
@@ -431,8 +453,8 @@ ex) "Hello".padStart(10,"x")  // xxxxxHello
 
  <br/>
 
-### type change
-***
+#### 📌type change
+
 * **string( )**   
 숫자를 문자로 바꾸는 방법    
 string constructor로 주위 감싸기   
@@ -440,12 +462,12 @@ new Date( ),getHours( )  // 19
 String(new Date( ).getHours( )) // "19"
 
 * **parseInt**   
-문자을 숫자로 바꾸는 방법
+문자를 숫자로 바꾸는 방법
 
  <br/>
 
-### Math 객체기능
-***
+#### 📌Math 객체기능
+
    * Math.round( ) 소수점 반올림
    * Math.ceil( ) 숫자를 천장(ceil)까지 높여주는 것. 즉, 소수점이있으면 무조건 올림하여 값이 정수로 나옴
    * Math.floor( ) 숫자를 바닥(floor)까지 낮여주는 것. 즉, 소수점이 있으면 무조건 없애서 값이 정수로 나옴
@@ -455,17 +477,8 @@ const todayQuote=quotes[Math.floor(Math.random()*quotes.length)]
 
  <br/>
 
-### js에서 html 요소를 생성
-***
-```js
-  document.creatElement("")
-  ```
-   예를 들어, document.creatElement("img")일 경우 html내에 img태그를 생성
-
- <br/>   
-
-### more founction
-***
+   
+📌   
 **appendChild( )** //함수 안의 경로에 정의한 값을 가장 뒤에 기입함(객체만 추가)   
 **prependChild( )**//반대로 앞에 기입   
 **insertBefore( )** //참조된 노드 앞에 특정 부모 노드의 자식 노드를 삽입   

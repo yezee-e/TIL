@@ -94,6 +94,8 @@ default: 0
        width:100%:;    
        box-sizing: border-box;    
        와 같이 사용
+* visibility:hidden - 공간은 그대로 두고 보이지만 않는것   
+   display:none - 잡아둔 공간도 사라짐
 
 
 
