@@ -615,3 +615,74 @@ fetch(url) : 실제로 url에 갈 필요없이 js가 대신 url을 호출
 .then(response => response.json())
 .then((data)=> {}) //정보 불러오기
 
+### ES6 문법
+***
+📌객체초기화
+```js
+let name="noona"
+let age =17
+let cute = true
+
+let person = {name, age, cute}
+// let person = {name:name,age:age,cute:cute}와 같다 
+
+```
+📌Destructuing
+```js
+let person = {
+    name:"noona",
+    age:17,
+    cute:true
+}
+let {name, age, cute} =  person
+/* let name = person.name   let age = person.age   let cute = person.cute   와 같다 */
+
+let array = [1,2,3]
+let [a,b,c] = array
+/* let a = array[0]   let b = array[1]   let c = array[2]   와 같다 */
+```
+📌Rest destructuring
+```js
+let person = {
+    name:"noona",
+    age:17,
+    cute:true
+}
+let {name, ...rest} = person
+console.log(rest) // {age:17, cute:true}
+
+let array = [1,2,3]
+let [a,...rest] = array console.log(rest)//[2,3]
+```
+📌Spread
+```js
+let a = [1,2]
+let b = [3,4]
+let c = [5,6]
+
+let result = [...a,...b,...c] // [1,2,3,4,5,6]
+```
+📌Template Literal
+```js
+let name ="noona"
+console.log(`제 이름은 ${name}입니다`)
+```
+
+📌arrow function
+화살표 함수 표현식은 기존의 function 표현방식보다 간결하게 함수를 표현할 수 있다. 
+return 생락가능하다
+자신의 this, arguments, super을 바인딩하지 않는다(즉, this함수 사용불가능)
+```
+```js
+  function foo () {
+    console.log("hello")
+}
+
+let foo=()=>{
+  console.log("hello")
+}
+//새로운 함수 선언 방식은 return 생락가능
+```
+
+
+
