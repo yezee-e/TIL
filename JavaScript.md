@@ -675,12 +675,26 @@ return 생락가능하다
 ```js
   function foo () {
     console.log("hello")
-}
+} //이전의 함수 선언 방식
 
 let foo=()=>{
   console.log("hello")
 }
-//새로운 함수 선언 방식은 return 생락가능
+//새로운 함수 선언 방식
+```
+```js
+let age =17
+let person ={
+  name:"yeji",
+  age:20,
+  getInfo:function(){
+    console.log(this)
+  }
+}
+
+person.getInfo() 
+//{name:"yeji",age:20,getInfo:[function]} 
+//this 함수를 사용하면 전역변수가 아닌 지역변수사용가능(나 자신을 불러주는 객체)
 ```
 
 
