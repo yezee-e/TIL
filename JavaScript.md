@@ -672,7 +672,6 @@ console.log(`제 이름은 ${name}입니다`)
 화살표 함수 표현식은 기존의 function 표현방식보다 간결하게 함수를 표현할 수 있다. 
 return 생락가능하다
 자신의 this, arguments, super을 바인딩하지 않는다(즉, this함수 사용불가능)
-```
 ```js
   function foo () {
     console.log("hello")
