@@ -425,12 +425,8 @@ localstorage는 안타깝게도 배열 저장 못함 오직 "텍스트"만 저�
 // local storage에 array로 저장이 안되기 때문에 JSON.stringify로 array처럼 생긴 string으로 저장한 후 다시 JSON.parse 이용해 array로 꺼내는 방법   
  <br/>
 
-### forEach()
-***
-array.foreach는 arry에 있는 각각의 item에 대해서 function을 실행하게 해줌
- <br/>
 
- ### learn fuctions
+ ### fuctions
 ***
 
 #### 📌isNaN():NaN인지 판별하는 방법, boolean으로 알려준다
@@ -562,13 +558,64 @@ if(arryToDos !== null){
 
  <br/>
 
-### fliter
-***
-"배열"에서 지우고 싶은 것이 있을때 사용(지우고 싶은것을 지우는 것이 아닌 필요없는 것을 배제하고 들고옴으로서 새 배열을 만듬. 즉, filter function은 새 배열을 만듬)    
+ ### 배열함수
+ ***
+ **배열함수 리스트**
+ * forEach: 반환값이 없다, 단순 for문과 같이 작동
+ * map: 반환값을 배열에 담아 반환
+ * filter: 조건에 충족하는(true)아이템만 배열에 담아 반환
+ * some: 조건에 충족하는 아이템이 하나라도 있으면 true반환, 아니면 flase
+ * every: 모든 배열에 아이템이 조건을 충족하면 true반환, 아니면 false
+ * find: 조건에 충족하는 아이템 "하나만" 반환(여러개라면 첫번째 것만 반환)
+ * findIndex: 조건에 충족하는 아이템의 인덱스값 반환(여러개라면 첫번째 아이템의 인덱스번호만 반환)
 
-forEach와 비슷하게 모든 배열을 거친다 다만 반드시 return해야함    
+#### 📌 forEach()
+array.forEach는 arry에 있는 각각의 item에 대해서 function을 실행하게 해줌
 
-arry의 item을 유지하고 싶으면 true를 리턴해야함
+```js
+let names =[ "yeji","rak","moon"]
+
+for(let i=0; i<names.length; i++){
+    console.log(names[i])
+} 
+//for문 
+//결과값: yeji rak moon
+
+function printName(item){
+    console.log(item)
+}
+
+names.forEach(printName) //forEach문
+
+
+names.forEach(function (item){
+    console.log(item)
+}) //forEach문
+
+names.forEach((item,index)=>{console.log(item,index)}) //forEach와 arrow함수
+```
+ <br/>
+
+ #### 📌 map()
+ return이 필요한 함수   
+ 배열로 결과값 출력    
+ 배열에서 특정 데이터만 배열로 받고싶을때 많이 사용    
+ ```js
+let names =[ "yeji","rak","moon"]
+
+let data =names.map((item)=>{
+  return itme
+})
+console.log(data) //결과값: ["yeji","rak","moon"]
+ ```
+
+#### 📌 fliter
+
+"배열"에서 지우고 싶은 것이 있을때 사용(지우고 싶은것을 지우는 것이 아닌 필요없는 것을    배제하고 들고옴으로서 새 배열을 만듬. 즉, filter function은 새 배열을 만듬)       
+
+forEach와 비슷하게 모든 배열을 거친다 다만 반드시 return해야함        
+
+arry의 item을 유지하고 싶으면 true를 리턴해야함    
 ```js
 const arr =[1223, 5443, 100, 345, 1200]
 function sexyfliter(num){ return num<=1000}
@@ -695,6 +742,25 @@ let person ={
 person.getInfo() 
 //{name:"yeji",age:20,getInfo:[function]} 
 //this 함수를 사용하면 전역변수가 아닌 지역변수사용가능(나 자신을 불러주는 객체)
+```
+
+```js
+function sumNumber() {
+    const sum =function(a,b){
+        return a+b;
+    }
+    return sum(40,10)
+}
+
+console.log(sumNumber())
+
+function sumNumber(){
+    const sum =(a,b)=>a+b
+    return sum(40,10)
+}
+
+console.log(sumNumber())
+
 ```
 
 
