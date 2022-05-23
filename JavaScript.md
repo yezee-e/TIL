@@ -672,7 +672,6 @@ console.log(`제 이름은 ${name}입니다`)
 화살표 함수 표현식은 기존의 function 표현방식보다 간결하게 함수를 표현할 수 있다. 
 return 생락가능하다
 자신의 this, arguments, super을 바인딩하지 않는다(즉, this함수 사용불가능)
-```
 ```js
   function foo () {
     console.log("hello")
@@ -684,5 +683,81 @@ let foo=()=>{
 //새로운 함수 선언 방식은 return 생락가능
 ```
 
+### api(application programming interface)
+***
 
+컴퓨터나 컴퓨터 프로그램 사이의 연결   
+즉, 서버(백엔드)와 클라이언트(프론트엔드)사이의 대화
+
+API는 상호 약속한 룰을 가지고 정보를 주고받는것이기 때문에 각각 API별로 룰이 다르다. 
+>* API endpoint 별 주는 데이터
+> * API 인증 방법 (api key로 인증을 하 
+ 나? 
+ 아니면 토큰으로 인증을하나?)
+ >* Query로 쓸 수 있는 인자들
+ >* API 응답내용들 (어떤 결과를 내가 받아볼 수 있는지)
+
+**Postman**-> api를 호출하는 툴
+
+**HTTP Request**   
+>HTML처럼 Header과 Body로 나뉘어져 있다. Header에는 이 문서의 타입 또는 인증을위한 api key나 토큰값 등을 넣을 수 있다.
+Body에는 실제 내용이 들어간다.
+
+**http request method**   
+>API를 호출하는 명령어에는 크게 4가지 종류가 있다.
+* GET : 데이터를 얻어온다 (기본값)
+* PUT: 데이터를 수정한다
+* POST: 데이터를 생성한다
+* DELETE: 데이터를 삭제한다
+
+### JS 동작원리
+***
+(사진)
+### JS  구성요소
+***
+* **Stack** - js가 실행이 되면 스택 프레임이 쌓이는 장소로 스택에 새로운 프레임이 들어오고 실행이 완료되면 나간다
+  first in last out구조의 자료형
+* **메모리 heap** - 동적으로 생성된 변수들은 메모리 heap에 가서 저장
+* **테스크 큐(queue)**- 웹api로 부터 받은 테스크를 큐에 저장
+* **event loop** - 스택과 큐 사이에서 흐름을 제어   
+  이벤트루프는 스택이 비어있는지 확인을 하고 비어있으면 큐에 있는 아이템을 꺼내다 스택에 올림
+* **웹 api** - Ajax요청,setTimeout(),event Handler와 같이 웹 브라우저에서 제공하는 기능들을 말한다.    
+  이들은 js의 stack에서 작업이 이루어지는 것이 아닌 별도의 thread에서 이루어진다
+  >* setTimeOut(함수,시간): 시간만큼 코드를 딜레이시키고 함수를 실행한다. 시간은 참고로 마이크로세컨드 단위이기 때문에 1초는 1000ms이다
+  > * Ajax, Axios, fetch: 클라이언트와 서버간에 데이터를 주고받는 기술
+  > * Event Handler : 클릭과같은 이벤트를 핸들하는 함수들 
+* **Thread(쓰레드)** - 실제로 작업을 실행하는 주체로 1개이거나 여러개일 수 있다.
+  JS는 싱글쓰레드로 하나의 일 밖에 처리를 못해서 동기적으로 일을 처리한다.   
+  만약 멀티쓰레드(1개이상)라면 여러개의 작업을 병렬적으로 처리할 수 있다
+
+  ### API부르기
+  ***
+ajax,axios,fetch가 있다
+* promise-> 비동기 동작을 다루는 하나의 패턴
+  
+* async/await -> 동기적인 js를 비동기적으로 처리하기 위해 사용   
+  fetch는 promise를 리턴     
+  await은 promise가 resolve또는 reject를 호출할때 까지 기다려준다.       
+await이 없으면 그냥 날것 그대로의 promise가 리턴   
+await을 쓰려면 함수를 async로 선언     
+그것외에도 async로 함수를 선언하면 그함수는 자동으로 promise를 반환   
+
+* json ->서버 클라이언트 통신에서 많이 쓰이는 데이터 타입 (png, jpg이런것과 같이 어떤 그냥 데이터 타입)       
+ 객체랑 똑같이생긴 텍스트라고 이해하기      
+ 간단한 텍스트인데 객체랑 똑같애서 나중에 읽어오기도 편함. 그래서 json타입을 서버통신시 많이 사용       
+fetch를 쓸때 항상 이 패턴   
+```js
+let response = await fetch(url)
+let daa = await response.json()
+```
+
+가장많이 사용하는 api호출코드
+```js
+const callAPI = async() =>{
+    let url = new URL(`url주소`)
+    let header = new Headers({헤더내용}) // 이건 필요한 경우만
+    let response = await fetch(url,{headers:header})
+    let data = await response.json()
+}
+```
 
