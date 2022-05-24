@@ -792,7 +792,7 @@ Body에는 실제 내용이 들어간다.
 
 ### JS 동작원리
 ***
-(사진)
+<img src="https://i.imgur.com/iyNcZEM.png">
 ### JS  구성요소
 ***
 * **Stack** - js가 실행이 되면 스택 프레임이 쌓이는 장소로 스택에 새로운 프레임이 들어오고 실행이 완료되면 나간다
@@ -831,8 +831,8 @@ let response = await fetch(url)
 let daa = await response.json()
 ```
 
-가장많이 사용하는 api호출코드
-```js
+✔가장 많이 사용하는 api호출코드
+```js 
 const callAPI = async() =>{
     let url = new URL(`url주소`)
     let header = new Headers({헤더내용}) // 이건 필요한 경우만
