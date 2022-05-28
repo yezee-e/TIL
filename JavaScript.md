@@ -371,6 +371,21 @@ console.log(grade)
 
  <br/>
 
+ ### innerHTML과 textContent차이
+ ***
+ * **innerHTML** - elementm의 HTML,XML을 읽어오거나 설정할 수 있다. 태그 안에 있는 HTML전체 내용을 들고옴
+ * **textContent** - 해상 노드나 가지고 있는 텍스트 값을 그대로 가져옴
+
+ ```js
+ <div id="test"><span>hi</span></div> //html에 이런 태그가 있다고 가정할때
+
+console.log(document.getElementById("test").innerHTML) //<span>hi</span>
+console.log(document.getElementById("test").textContent) //hi
+```
+
+
+
+
 ### events
 ***
 >* title.onclick = handleMouseEnter;
@@ -405,6 +420,22 @@ console.log(event);
 **remove**라는 function은 명시한 class name을 제거         
 **add**라는 function은 명시한 class name을 추가      
 **toggle**은 토큰이 존재하면 토큰제거,토큰존재 하지않으면 토큰 추가   
+
+
+### offset(slice bar)
+***
+```js
+let tabs = document.querySelectorAll(".task-tabs div") //각 목록 전부 들고오기
+let underLine= document.getElementById("under-line") //밑줄
+
+tabs.forEach(menu=>menu.addEventListener("click",(e)=>tabsIndicator(e))) //forEach로 clickevent주기
+
+function tabsIndicator(e){
+    underLine.style.left = e.currentTarget.offsetLeft+"px"
+    underLine.style.width = e.currentTarget.offsetWidth+"px"
+    underLine.style.top = e.currentTarget.offsetTop+e.currentTarget.offsetHeight+"px"
+}
+```
 
 
 ### local storage
