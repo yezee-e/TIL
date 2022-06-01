@@ -6,3 +6,9 @@
 - 설치 후 → 종료 → 관리자권한으로 재실행 → choco 사이트에서 Find Packages → 필요한 페키지 복사해서 PowerShell에서 실행   
 
 WSL: window subsystem for linux
+
+### 리눅스
+***
+* command
+  **ls**  디렉토리의 목록을 보여줌
+  **cd ..** 상위폴더로 이동
