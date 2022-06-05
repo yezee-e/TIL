@@ -365,6 +365,62 @@ profile("김태호")
 #이름:김태호     나이:17         주 사용 언어:파이썬
 
 ```
+### 💨함수)키워드값
+```py
+def profile(name, age, main_lang):
+    print(name,age,main_lang)
+
+profile(name="유재석",main_lang="파이썬",age=20)   #유재석 20 파이썬
+profile(main_lang="자바",age=25, name="김태호")    #김태호 25 자바
+```
+### 💨함수)가변인자
+```py
+def profile(name,age,lang1,lang2,lang3,lang4,lang5):
+    print(f"이름:{name}\t나이:{age} \t",end="") #end=""는 print해도 한줄로 나올수있게 해준다
+    print(lang1,lang2,lang3,lang4,lang5)
+
+profile("유재석",20,"python","java","c","c++","c#")    
+profile("김태호",25,"kotlin","swift","","","") #인자가 늘어날때마다 ""넣어야한다
+```
+```py
+def profile(name,age,*language): #여러인자를 넣을때는 *language처럼 만든다
+    print(f"이름:{name}\t나이:{age} \t",end="  ") #end=""는 print해도 한줄로 나올수있게 해준다
+    for lang in language:
+        print(lang, end="  ")
+    print()
+
+profile("유재석",20,"python","java","c","c++","c#","js")    
+profile("김태호",25,"kotlin","swift")
+```
+### 💨지역변수와 전역변수
+***
+지역변수
+```py
+gun=10
+
+def checkpoint(soldiers): #경계근무
+    global gun #전역공간에 있는 gun 사용 
+    gun=gun-soldiers
+    print(f"[함수 내] 남은 총:{gun}")
+
+print(f"전체 총:{gun}")
+checkpoint(2) #2명이 경계 근무 나감
+print(f"남은 총:{gun}")
+```
+전역변수
+```py
+gun=10
+def checkpoint(gun,soldiers): #경계근무
+    gun=gun-soldiers
+    print(f"[함수 내] 남은 총:{gun}")
+    return gun
+
+print(f"전체 총:{gun}")
+gun =checkpoint(gun,2) #2명이 경계 근무 나감
+print(f"남은 총:{gun}")
+
+```
+
 
 
 ## 💙quiz
@@ -413,3 +469,31 @@ for i in range(1,51): #1~50이라는 수
 
 print(f"총 탑승승객: {cnt}분")        
 ```
+###  🔹표준체중을 구하는 프로그램을 작성🔹
+*표준체중: 각 개인의 키에 적당한 체중    
+
+(성별에 따른 공식)   
+남자:키(m) x 키(m) x 22   
+여자:키(m) x 키(m) x 21   
+
+조건1:표준 체중은 별도의 함수 내에서 계산   
+        * 함수명:std_weight   
+        * 전달값:키(height), 성별(gender)   
+조건2:표준 체중은 소수점 둘째자리까지 표시   
+
+(출력예제)   
+키 175cm 남자의 표준 체중은 67.38kg입니다   
+```py
+def std_weight(height,gender):
+    
+    if gender =="men":
+       return height*height*22
+    else:
+        return height*height*21
+
+height=160
+gender="women"
+weight=round(std_weight(height/100,gender),2)
+print(f"키 {height}cm {gender}의 표준 체중은 {weight}kg입니다")
+```
+
