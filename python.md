@@ -421,7 +421,156 @@ print(f"남은 총:{gun}")
 
 ```
 
+## 표준입출력
+***
+```py
+print("python","java") # python java
+print("python"+"java") # pythonjava
+print("python","java" ,sep=" vs ") #python vs java
+```
+```py
+print("python", "java", sep=",", end="?") 
+print("무엇이 더 재밌을까요?") #python,java?무엇이 더 재밌을까요?
+```
+```py
+import sys
+print("python","java", file=sys.stdout) #표준출력
+print("python","java", file=sys.stderr) #표준에러
+```
+```py
+scores ={"수학":0,"영어":50,"코딩":100}
+for subject, score in scores.items():
+    print(subject.ljust(8),str(score).rjust(5),sep=":") 
 
+#.ljust(띄울칸),.rjust(띄울칸)는 string타입만으로 받는다(오왼정렬방법)
+# 수학      :    0
+# 영어      :   50
+# 코딩      :  100    
+```
+```py
+
+for num in range(1,21):
+    print("대기번호:"+str(num).zfill(3))   
+#은행대기순번표
+#.zfill()나머지 공간에 0을 자동채움
+```
+```py
+answer =input("아무 값이나 입력하세요:") #사용자입력을 통해서 답을 받게 되면 string타입으로 받는다
+print("입력하신 값은",answer,"입니다.")
+```
+```py
+print("{0: >10}".format(500))
+# 빈자리는 빈 공간으로 두고, 오른쪽 정렬을 하되, 총 10자리 공간을 확보
+#          500
+
+print(f"{500: <+10}")   
+print(f"{-500: >+10}") 
+# 양수일 땐 +로 표시, 음수일 땐 -로 표시
+#+500
+#          -500
+
+print(f"{500:_<10}")    
+print(f"{10000000000:,}")  
+#왼쪽 정렬, 빈칸으로 _로 채움
+#500_______
+#3자리 마다 코마를 찍어주기
+ #10,000,000,000
+
+print(f"{10000000000:+,}")  
+print(f"{10000000:^<+20,}") 
+#3자리 마다 코마를 찍어주기, 부호도 붙이기
+#+10,000,000,000
+#3자리 마다 코마를 찍어주기, 부호도 붙이기,자릿수 확보하기, 빈자리는 ^로 채워주기
+#+10,000,000^^^^^^^^^
+
+
+print(f"{5/3:f}") 
+
+print(f"{5/3:.2f}") 
+#소수점 출력
+#1.666667
+#소수점을 특정 자리수 까지만 표시
+#1.67(소수점 3째 자리에서 반올림)
+```
+
+## 파일 입출력
+*** 
+->파일을 생성
+```py
+score_file =open("score.text", "w", encoding="utf8") #"w"는 쓰기용도(write)
+print("수학:0", file=score_file)
+print("영어:50", file=score_file)
+score_file.close()
+```
+->파일을 계속이어작성
+```py
+score_file =open("score.text", "a", encoding="utf8") #"a"는 이어쓰는용도(append)
+score_file.write("과학:80")
+score_file.write("\n코딩:100")
+score_file.close()
+```
+->파일을 읽어옴
+```py
+score_file =open("score.text", "r", encoding="utf8") #"r"는 읽어오는용도(read)
+print(score_file.read()) #전체파일 읽어옴
+score_file.close()
+
+score_file =open("score.text", "r", encoding="utf8") #"r"는 읽어오는용도(read)
+print(score_file.readline()) #줄별로 읽기, 한 줄 읽고 커서는 다음 줄로 이동
+print(score_file.readline()) #줄별로 읽기, 한 줄 읽고 커서는 다음 줄로 이동
+print(score_file.readline()) #줄별로 읽기, 한 줄 읽고 커서는 다음 줄로 이동
+print(score_file.readline()) #줄별로 읽기, 한 줄 읽고 커서는 다음 줄로 이동
+score_file.close()
+
+score_file =open("score.text", "r", encoding="utf8") #"r"는 읽어오는용도(read)
+while True:
+    line =score_file.readline()
+    if not line: #읽어올 내용이 없으면
+        break    #멈춤
+    print(line)
+score_file.close() #읽어올파일이 몇줄인지 모를때 사용
+
+
+score_file =open("score.text", "r", encoding="utf8") #"r"는 읽어오는용도(read)
+lines =score_file.readlines() #list 형태로 저장
+for line in lines:
+    print(line)
+
+score_file.close()
+```
+### pickle
+프로그램상에서 사용하고 있는 데이터를 파일 형태로 저장하는 것
+
+```py
+import pickle
+
+profile_file =open("profile.pickle","wb")
+profile ={"이름":"박명수","나이":30,"취미":["축구","골프","코딩"]}
+print(profile)
+pickle.dump(profile, profile_file) #profile에 있는 정보를 file에 저장
+profile_file.close()
+
+profile_file =open("profile.pickle","rb")
+profile = pickle.load(profile_file) #file에 있는 정보를 profile에 불러오기
+print(profile)
+profile_file.close()
+```
+
+### with
+```py
+import pickle
+with open ("profile.pickle","rb") as profile_file: #profile.pickle을 열어서 profile_file에 변수로 저장
+    print(pickle.load(profile_file)) #profile_file의 내용을 pickle의 load를 통해 불러와서 출력 
+```
+```py
+with open("study.text","w",encoding="utf8") as study_file:
+    study_file.write("파이썬을 열심히 공부하고 있어요")  #with를 통해 파일 생성
+
+
+with open("study.text","r",encoding="utf8") as study_file:
+    print(study_file.read()) #with를 통해 study.text파일을 읽어오기 
+
+```
 
 ## 💙quiz
 ***
