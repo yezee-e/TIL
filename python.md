@@ -569,11 +569,12 @@ with open("study.text","r",encoding="utf8") as study_file:
 ```
 
 ## 클래스
-* 클래스
- -서로 연관이 있는 변수와 함수의 집합
+ 서로 연관이 있는 변수와 함수의 집합
 
- * 멤버변수   
- -클래스내에서 정의된 변수    
+ <br/>
+
+ ### 💨멤버변수   
+ -클래스내에서 정의된 변수       
  -객체에 추가로 변수를 외부에서 만들어서 사용가능
 ```py
 class Unit:
@@ -585,25 +586,21 @@ class Unit:
         print(f"체력{self.hp}, 공격력{self.damage}")
 
 
-marine1 =Unit("마린",40,5)  
-marine2 =Unit("마린",40,5)  
-tank1 =Unit("탱크",150,35)  
-tank2 =Unit("탱크",150,35)  
-
-#레이스:공중 유닛, 비행기, 클로킹(상대방에게 보이지 않음)
 wraith1 =Unit("레이스",80,5)
 print(f"유닛이름:{wraith1.name}, 공격력:{wraith1.damage}")
 
 
-#마인드 컨트롤:상대방 유닛을 내 것으로 만드는 것(빼앗음)
 wraith2 =Unit("빼앗은 레이스",80,5)
 wraith2.clocking =True  #외부변수
 if wraith2.clocking ==True:
     print(f"{wraith2.name}는 현재 클로킹 상태입니다")
 
+#레이스:공중 유닛, 비행기, 클로킹(상대방에게 보이지 않음)
+#마인드 컨트롤:상대방 유닛을 내 것으로 만드는 것(빼앗음)
 ```
-### 메소드
+###  💨메소드
 ```py
+#지상유닛
 class Unit:
     def __init__(self,name,hp,damage):  #__init__(객체 생성자)
         self.name=name  #멤버변수(클래스내에서 정의된 변수)
@@ -631,7 +628,6 @@ class AttackUnit:
             print(f"{self.name}:파괴되었습니다")
 
 
-#파이어뱃:공격 유닛, 화염방사기
 firebat1 =AttackUnit("파이어뱃",50,16)
 firebat1.attack("5시")
 
@@ -639,10 +635,190 @@ firebat1.attack("5시")
 firebat1.damaged(25)
 firebat1.damaged(25)
 
+
+#파이어뱃:공격 유닛, 화염방사기
+
 ```
 
+### 💨상속,다중상속
+```py
+#일반유닛
+class Unit:
+    def __init__(self,name,hp):  #__init__(객체 생성자)
+        self.name=name  #멤버변수(클래스내에서 정의된 변수)
+        self.hp=hp  #멤버변수
+   
+#공격유닛
+class AttackUnit(Unit):
+    def __init__(self,name,hp,damage):  
+        Unit.__init__(self,name,hp) #상속
+        self.damage=damage 
+
+    def attack(self,location):
+        print(f"{self.name}:{location} 방향으로 전군을 공격합니다. [공격력{self.damage}]")
 
 
+    def damaged(self, damage):
+        print(f"{self.name}:{damage} 데미지를 입었습니다") 
+        self.hp-=damage
+        print(f"{self.name}:현재 체력은 {self.hp}입니다.")
+        if self.hp<=0:
+            print(f"{self.name}:파괴되었습니다")
+
+
+#비행유닛
+class Flyable:
+    def __init__(self,flying_speed):
+        self.flying_speed =flying_speed
+
+    def fly(self,name,location):
+        print(f"{name}:{location}방향으로 날아갑니다. [속도 {self.flying_speed}]")
+
+#공중공격유닛
+class FlyableAttackUnit(AttackUnit,Flyable):  #다중상속
+    def __init__(self, name, hp, damage, flying_speed):
+        AttackUnit.__init__(self,name,hp,damage)
+        Flyable.__init__(self,flying_speed)
+
+
+valkyrie =FlyableAttackUnit("발키리",200,6,5)
+valkyrie.fly(valkyrie.name,"3시")
+
+
+#드랍쉽:공중유닛(수송기) .마린/파이어뱃/탱크 등을 수송. 공격x
+#발키리 :공중 공격 유닛, 한번에 14발 미사일 발사
+
+```
+
+### 💨연산자 오버라이딩(자식 클라스에서 정의한 메소드를 사용) 
+-unit에 move()라는 함수를 추가함   
+-AttackUnit(지상유닛)은 그냥 move를 사용하면 unit의 함수가 호출   
+-AttackUnit을 상속하는 FlyableAttackUnit은 똑같은 move()함수를 새롭게 정의
+```py
+#일반유닛
+class Unit:
+    def __init__(self,name,hp,speed):  #__init__(객체 생성자)
+        self.name=name  #멤버변수(클래스내에서 정의된 변수)
+        self.hp=hp  #멤버변수
+        self.speed  =speed
+
+
+    def move(self,location):
+        print("[지상 유닛 이동]")
+        print(f"{self.name}:{location}방향으로 이동합니다[속도{self.speed}]")
+   
+#공격유닛
+class AttackUnit(Unit):
+    def __init__(self,name,hp,speed,damage):  
+        Unit.__init__(self,name,hp,speed) #상속
+        self.damage=damage 
+
+    def attack(self,location):
+        print(f"{self.name}:{location} 방향으로 전군을 공격합니다. [공격력{self.damage}]")
+
+
+    def damaged(self, damage):
+        print(f"{self.name}:{damage} 데미지를 입었습니다") 
+        self.hp-=damage
+        print(f"{self.name}:현재 체력은 {self.hp}입니다.")
+        if self.hp<=0:
+            print(f"{self.name}:파괴되었습니다")
+
+
+#비행유닛
+class Flyable:
+    def __init__(self,flying_speed):
+        self.flying_speed =flying_speed
+
+    def fly(self,name,location):
+        print(f"{name}:{location}방향으로 날아갑니다. [속도 {self.flying_speed}]")
+
+#공중공격유닛
+class FlyableAttackUnit(AttackUnit,Flyable):  #다중상속
+    def __init__(self, name, hp, damage,flying_speed):
+        AttackUnit.__init__(self,name,hp,0,damage)  #지상 speed 0
+        Flyable.__init__(self,flying_speed)
+
+
+    def move(self,location):
+        print("[공중 유닛 이동]")
+        self.fly(self.name, location)
+
+
+valture =AttackUnit("벌쳐",80,10,20)
+battelcruiser =FlyableAttackUnit("배틀크루저",500,25,3)
+
+valture.move("11시")  #공격유닛인 벌쳐는 attackunit이 상속받은 move를 바로사용
+battelcruiser.move("9시") # 공중유닛인 배틀크루져는 unit의 move함수를 재정의하여 사용 
+
+
+#벌쳐: 지상유닛, 기동성이 좋음
+#배틀크루져: 공중유닛, 체력 좋음, 공격력도 좋음
+```
+
+### 💨pass->완성되지 않은채 실행할수있게함
+### 💨super->초기화 사용방식, self정보가 필요하지 않다., 다중상속이 불가능(하나만 상속가능)
+
+```py
+#일반유닛
+class Unit:
+    def __init__(self,name,hp,speed):  #__init__(객체 생성자)
+        self.name=name  #멤버변수(클래스내에서 정의된 변수)
+        self.hp=hp  #멤버변수
+        self.speed  =speed
+
+
+    def move(self,location):
+        print("[지상 유닛 이동]")
+        print(f"{self.name}:{location}방향으로 이동합니다[속도{self.speed}]")
+   
+#공격유닛
+class AttackUnit(Unit):
+    def __init__(self,name,hp,speed,damage):  
+        Unit.__init__(self,name,hp,speed) #상속
+        self.damage=damage 
+
+    def attack(self,location):
+        print(f"{self.name}:{location} 방향으로 전군을 공격합니다. [공격력{self.damage}]")
+
+
+    def damaged(self, damage):
+        print(f"{self.name}:{damage} 데미지를 입었습니다") 
+        self.hp-=damage
+        print(f"{self.name}:현재 체력은 {self.hp}입니다.")
+        if self.hp<=0:
+            print(f"{self.name}:파괴되었습니다")
+
+
+#비행유닛
+class Flyable:
+    def __init__(self,flying_speed):
+        self.flying_speed =flying_speed
+
+    def fly(self,name,location):
+        print(f"{name}:{location}방향으로 날아갑니다. [속도 {self.flying_speed}]")
+
+#공중공격유닛
+class FlyableAttackUnit(AttackUnit,Flyable):  #다중상속
+    def __init__(self, name, hp, damage,flying_speed):
+        AttackUnit.__init__(self,name,hp,0,damage)  #지상 speed 0
+        Flyable.__init__(self,flying_speed)
+
+
+    def move(self,location):
+        print("[공중 유닛 이동]")
+        self.fly(self.name, location)
+
+
+#건물
+class BuildingUnit(Unit):
+    def __init__(self, name, hp, location):
+        # Unit.__init__(self,name,hp,0) #건물은 speed가 필요없기때문에 0으로 설정
+        super().__init__(name,hp,0) #super은 self정보 필요x
+        self.location=location
+
+#서플라이 디폿:건물, 1개 건물=8유닛
+```
 
 
 ## 💙quiz
