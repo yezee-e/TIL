@@ -879,7 +879,7 @@ finally:
 ```
 
 ## 모듈 &패키지 
-* 모듈- 함수 정의나 클래스 등의 파이선 문장들을 담고있는 것
+* 모듈- 함수 정의나 클래스 등의 파이선 문장들을 담고있는 것   
 * 패키지- 모듈을 모아둔 집합
 
 ```py
@@ -916,17 +916,52 @@ import random
 print(inspect.getfile(random)) #모듈위치확인하고 가져오기
 ```
 ## pip install(패키지 설치하기)
-https://pypi.org/ 
-터미널에서 install한 패키지 검색
-pip list -> 설치한 pip 확인
-pip show -> 설치한 pip 상세확인
-pip install --upgrade (패키지명)->pip 업그레이드
-pip uninstall (패키지명) -> 설치한 pip삭제
+https://pypi.org/    
+터미널에서 install한 패키지 검색   
+pip list -> 설치한 pip 확인   
+pip show -> 설치한 pip 상세확인   
+pip install --upgrade (패키지명)->pip 업그레이드   
+pip uninstall (패키지명) -> 설치한 pip삭제   
 
 ## 내장함수(바로 사용가능한 함수)
-input : 사용자가 입력을 받는 함수
-dir: 어떤 객체를 넘겨줬을때 그 객체가 어떤 변수와 함수를 가지고 있는지 표시
-list of python builtins를 google에 검색하여 다양한   내장함수 확인
+list of python builtins를 google에 검색하여 다양한 내장함수 확인     
+input : 사용자가 입력을 받는 함수   
+dir: 어떤 객체를 넘겨줬을때 그 객체가 어떤 변수와 함수를 가지고 있는지 표시   
 
 ## 외장함수(직접 import해서 사용가능한 함수)
-list of python modules를 google에 검색하여 다양한 외장함수 확인
+list of python modules를 google에 검색하여 다양한 외장함수 확인   
+glob: 경로 내의 폴더/ 파일 목록 조회(윈도우 dir)   
+os:운영체제에서 제공하는 기본기능   
+time:시간관련 함수     
+timedelta: 두 날짜 사이의 간격   
+
+ex>
+```py
+import glob
+print(glob.glob("*.py")) #확장자가 py 인 모든파일
+print(os.getcwd()) #현재 디렉토리
+```
+```py
+import os
+folder ="sample_dir"
+
+if os.path.exists(folder): #폴더 존재여부확인
+    print("이미 존재하는 폴더입니다")
+    os.rmdir(folder)
+    print(folder,"폴더를 삭제하였습니다") #폴더 삭제
+else:
+    os.makedirs(folder) #폴더생성
+    print(folder, "폴더를 생성하였습니다")
+```
+```py
+import time
+print(time.strftime("%Y-%m-%d %H:%M:%S")) #2022-06-15 01:35:51
+print("오늘날짜는", datetime.date.today()) #오늘날짜는 2022-06-15
+```
+```py
+import datetime
+#timedelta: 두 날짜 사이의 간격
+today=datetime.date.today() #오늘 날짜 저장
+td =datetime.timedelta(days=100) #더할날짜 100일
+print("우리가 만나지 100일은" ,today+td) #우리가 만나지 100일은 2022-09-23
+```
