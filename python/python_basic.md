@@ -878,4 +878,55 @@ finally:
     print("계산기를 이용해 주셔서 감사합니다.")
 ```
 
+## 모듈 &패키지 
+* 모듈- 함수 정의나 클래스 등의 파이선 문장들을 담고있는 것
+* 패키지- 모듈을 모아둔 집합
 
+```py
+import theater_module
+theater_module.price(3) #3명이서 영화 보러 갔을 때 가격
+theater_module.price_morning(4) #4명이서 조조 할인 영화 보러 갔을때
+theater_module.price_soldier(5) #5명의 군인이 영화 보러 갔을 때
+```
+```py
+import theater_module as mv #별명을 붙여서 줄이기
+mv.price(3)
+mv.price_morning(4)
+mv.price_soldier(5)
+```
+```py
+from theater_module import * # *은 모두를 사용하겠다
+price(3)
+price_morning(4)
+price_soldier(5)
+```
+```py
+from theater_module import price, price_morning #사용할 함수만 명시 
+price(5)
+price_morning(3)
+```
+```py
+from theater_module import price_soldier as so # 사용할 함수만 명시 한 후에 별명을 줘서 줄이기
+so(5)
+```
+* 패키지, 모듈위치
+```py
+import inspect
+import random
+print(inspect.getfile(random)) #모듈위치확인하고 가져오기
+```
+## pip install(패키지 설치하기)
+https://pypi.org/ 
+터미널에서 install한 패키지 검색
+pip list -> 설치한 pip 확인
+pip show -> 설치한 pip 상세확인
+pip install --upgrade (패키지명)->pip 업그레이드
+pip uninstall (패키지명) -> 설치한 pip삭제
+
+## 내장함수(바로 사용가능한 함수)
+input : 사용자가 입력을 받는 함수
+dir: 어떤 객체를 넘겨줬을때 그 객체가 어떤 변수와 함수를 가지고 있는지 표시
+list of python builtins를 google에 검색하여 다양한   내장함수 확인
+
+## 외장함수(직접 import해서 사용가능한 함수)
+list of python modules를 google에 검색하여 다양한 외장함수 확인
