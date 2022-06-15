@@ -13,20 +13,28 @@
 O(1) < O(logN) < O(N) < O(NlogN) < O(N^2)   
 
 ## Bubble sort
-* **Big-O는 O(N^2)** -for문을 두번돌림
+* **Big-O는 O(N^2)** -반복문이 중첩이기 때문
+* 옆에 있는 원소와 비교해서 정렬해주는 알고리즘입니다. 거품이 비비듯이 움직임
+* 오른쪽에 있는 애가, 왼쪽에 있는 애보다 작으면, 위치를 바꿔줍니다. 
+
 ```py
 def bubbleSort(list):
-    #크기 =5
+    # 리스트의 길이=5
     length =len(list)
-    for i in range(0,length-1):
-        print("")
-        print("i:",i)
 
+    #리스트의 마지막 것은 비교할 것이 뒤에 없기 때문에 -1이 붙음
+    for i in range(0,length-1):
+       
+        #위의 반복문이 한번 실행되면
+        #마지막에 가장 큰 값이 들어감
+        #length-1-i로 해줘서 마지막 값을 제외
         for j in range(0,length-1-i):
             print("j:",j)
 
+            #앞번호가 뒷번호 보다 크면 둘이 자리바꾸기(스왑)
             if(list[j]>list[j+1]) :
-                list[j],list[j+1] = list[j+1], list[j] #앞번호가 뒷번호 보다 크면 둘이 자리바꾸기
+                #스왑하는 부분
+                list[j],list[j+1] = list[j+1], list[j] 
 list =[5,1,4,2,8]
 bubbleSort(list)
 print(list)
@@ -52,25 +60,33 @@ print(list)
 ```
 
 ## Insert Sort 
-* **Big-O는 O(N^2)**  -반복문을 두 번 중첩
+* **Big-O는  O(n) 또는 O(N^2)**  
+* bubble sort 같은 경우에, 왼쪽에 있는 애를 오른쪽으로 계속 미는 느낌이었다면 
+  insert sort 같은 경우에는 오른쪽애 있는 애를 왼쪽으로 민다는 느낌
+
 ```py
 def insertSort(list):
 
     for i in range(1, len(list)): #첫번째 수 부터 비교하지 않기 때문에 0번 부터가 아닌 1부터 시작
 
+        #key값 정하기
         key=list[i]
+
+        #바로 앞의 비교할 값을 위해 j를 설정
         j=i-1
 
-        print("key:",key)
-
+        #만약 리스트 앞에 값이 있고
+        #앞의 값이 key값 보다 크면
         while j >= 0 and key < list[j] :
 
+            #한칸씩 밀어줌 
             list[j+1] =list[j]
-            print("list:",list)
+          
             j-=1
-            print("list:",list)
+           
+           #key가 들어갈 위칭 key값을 위치 
             list[j+1] =key
-            print("list:",list)
+         
             
 
 list =[12,11,13,5,6]
@@ -102,3 +118,5 @@ insertSort(list)
 # list: [5, 11, 11, 12, 13]
 # list: [5, 6, 11, 12, 13]
 ```
+
+## Selection Sort
