@@ -120,7 +120,7 @@ insertSort(list)
 ```
 
 ## Selection Sort
-* **Big-O는** (n-1) + (n-2) + .... + 2 + 1 => n(n-1)/2 즉,O(n2) 
+* **Big-O는 (n-1) + (n-2) + .... + 2 + 1 => n(n-1)/2 즉,O(n2)**
 * 골라서 정렬
 * 왼쪽부터, 리스트에 있는 가장 작은 애랑 순서를 바꿈
 ```py
@@ -147,7 +147,7 @@ print(list)
 ```
 
 ## Merge Sort
-* **Big-O는**  O(N logN) - 분할하는 과정은  O(log N)이고 합쳐주는 과정은 O(N)
+* **Big-O는  O(N logN)** - 분할하는 과정은  O(log N)이고 합쳐주는 과정은 O(N)
 *  모든 것을 다 나누고나서 합치는것이 아니라, 나누는 중간에 합칩
 ```py
 def mergeSort(list):
@@ -198,7 +198,7 @@ mergeSort(list)
 
 ## Quick Sort
 *  pivot이라는 좀 특이한 방식을 사용하고
-*  **시간복잡도**가 n log n ~ n^2 입니다.
+*  **시간복잡도가 n log n ~ n^2**
 ```py
 
 # pivot을 기준으로 쪼갠다
@@ -247,7 +247,7 @@ print(list)
 ```
 
 ## Heap Sort
-* * **Big-O는** O(NlogN)
+* **Big-O는 O(NlogN)** 
 * 최대값 및 최소값을 찾아내기 위해 고안된 완전 이진트리 형태의 자료구조
 * 트리 같은 형태로 자료 쌓아놓고, 최대값이나 최소값 빨리 찾는 것
 
@@ -301,4 +301,76 @@ list=[4,10,3,5,1]
 heapSort(list)
 n=len(list)
 print("result:",list)
+```
+
+## linked List
+```py
+class Node:
+    def __init__(self, data):
+        self.data=data
+        self.next=None
+
+node1=node(10)
+node2=node(20)
+node3=node(30)
+
+node1.next =node2
+node2.next =node3
+```
+
+## stack
+```py
+#node를 만들어줍니다
+class Node:
+    def __init__(self, data):
+        self.data =data
+        self.next =None
+
+
+#stack을 만들어줍니다
+class stack :
+
+    #head 만들고
+    def __init__(self):
+        self.head=None
+
+    #stack 쌓아줍니다
+    def push(self,data):
+
+        #stack이 비어있을때
+        if self.head is None:
+            self.head =Node(data)
+
+        #stack이 비어있지 않을때
+        else:
+            new_node =Node(data)
+            new_node.next =self.head
+            self.head =new_node
+
+    #stack 빼주는 것
+    def pop(self):
+
+        #stack이 비었을때
+        if self.head is None:
+            return None
+        #stack에 데이터가 없을때 
+        else:
+            popped =self.head.data
+            self.head =self.head.next
+            return popped
+
+s= stack()
+
+s.push("a")
+s.push("b")
+s.push("c")
+s.push("d")
+s.push("e")
+
+print(s.pop()) #e
+print(s.pop()) #d
+print(s.pop()) #c
+print(s.pop()) #b
+print(s.pop()) #a
+print(s.pop()) #None
 ```
