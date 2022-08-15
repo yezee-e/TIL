@@ -200,3 +200,23 @@ function reverse(str){
 console.log(reverse('Hello')) //olleH
 ```
 
+💭 구구단 만들기
+```js
+function timesTable(n){
+    for(var i=1; i<10; i++){
+        document.write(n," x ",i," = ", n*i +"<br/>")
+    }
+}
+
+timesTable(2); //2단만 출력
+timesTable(3); //3단만 출력 
+```
+
+💭 이중반복문으로 구구단만들기
+```js
+for(var i=2; i<10; i++>){
+    for(var j=1; j<10; j++>){
+        document.writeln(i," + ",j," = ",i*j)
+        document.writeln("<br/>") //줄바꿈역활(파이썬의 end="")
+    }
+}
