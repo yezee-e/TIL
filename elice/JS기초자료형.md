@@ -11,7 +11,7 @@ JS- 이미지 슬라이스 효과, 팝업 효과 등의 기능을 포함한 동�
 ### 📌JS변수
 
 * 변수: 데이터를 담는 공간
-* 변수선언: 데이터를 다믈 공간을 생성
+* 변수선언: 데이터를 담을 공간을 생성
 * 변수초기화: 생성된 변수에 데이터를 전달
     ```js
     var fruit; // 변수선언
@@ -97,6 +97,7 @@ var num3=3.14; //실수
 
 #### 💭 함수
 함수생성: function키워드를 사용하여 생성    
+
 함수호출: 함수안에 있는 코드를 실행시키겠다는 의미
 ```js
 var func1 =function(){
@@ -113,9 +114,12 @@ function func1(){
 
 func1() //함수호출
 ```
-매개변수:  인자로부터 전달받은 값이 들어가는 통로. 상황에 따라 생략가능    
+매개변수:  인자로부터 전달받은 값이 들어가는 통로. 상황에 따라 생략가능 
+
 인자: 함수에 절달하는 데이터   
+
 return: 함수 안에 데이터를 저장할 때 시용
+
 ```js
 var area=function(width, height){
     return width* height;
@@ -149,7 +153,7 @@ console.log(fruit[0]); //데이터확인, 0번째 인덱스의 데이터 추출
 배열데이터 변경: 인덱스를 사용하여 접근 후 새로운 데이터 대입
 ```js
 var fruit =["사과"."배","수박"];
-fruit[0]="포도";
+fruit[0]="포도"; //["포도", "배", "수박"]
 
 console.log(fruit);
 ```
@@ -165,7 +169,7 @@ var student={
     sum: function(num1,num2){return num1+num2;}
 }
 
-console.log(student.name); //개게명.프로퍼티명
+console.log(student.name); //객체명.프로퍼티명
 console.log(student['name']); //객체명["프로퍼티명"]
 
 student.name="Park" // name프로퍼티의 데이터 변경
@@ -200,7 +204,7 @@ var fruit=["사과", "배", "포도"];
 
 fruit.length; //데이터 개수
 
-fruit.push("딸가"); //배열 뒤에 데이터 삽입
+fruit.push("딸기"); //배열 뒤에 데이터 삽입
 fruit.unshift("레몬"); //배열 앞에 데이터 삽입
 
 fruit.pop(); //배열 뒤의 데이터 제거

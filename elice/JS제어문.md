@@ -180,14 +180,14 @@ function isPrime(n){
         if(n % divisor ===0){  //n과 나누는 수가 나누어 떨어지면
             return false;
         }else{
-            divisor++;         //나누어 떨어지지 않는다면 나눈는 수 1증가
+            divisor++;         //나누어 떨어지지 않는다면 나누는 수 1증가
         }
     }return true;
 }
 ```
 
 💭 문자열 거꾸로 출력하기    
-문자열 맨 뒤부터 출력해야 하므로 irk o이 될때까지 1씩 감소    
+문자열 맨 뒤부터 출력해야 하므로 str이 0이 될때까지 1씩 감소    
 인덱스는 0부터(문자열길이 -1)이라는 점 유의
 ```js
 function reverse(str){
