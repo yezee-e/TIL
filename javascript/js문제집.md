@@ -142,3 +142,47 @@ function meetAt(year, month, date) {
 
 console.log(meetAt(2022,1,7))
 ```
+
+어떤 정수의 제곱근인지 확인    
+제곱근이 정수면, 약수의 갯수가 홀수
+```js
+console.log(Math.sqrt(121));   // 11 
+```
+
+주어진 값이 정수인지 확인 
+```js
+Number.isInteger(1.5);   // false
+Number.isInteger(2);     // true
+Number.isInteger(3);     // true
+```
+
+map()    
+현재의배열에서 새로운배열로 반환하는 역할
+배열의 모든 원소에 대해 body를 수행한다. (for each문처럼 알아서 각 요소에 body를 적용한다.)
+```js
+배열.map((요소) => {
+  console.log(요소);    //body 예시
+}
+
+배열.map((요소, 인덱스) => {
+  console.log(인덱스);  //body 예시
+  return 요소;    //body 예시
+}
+```
+
+sort()
+sort()의 return 값에 따른 실행내용   
+반환 값 < 0 : a가 b보다 앞에 있어야 한다.    
+반환 값 = 0 : a와 b의 순서를 바꾸지 않는다.    
+반환 값 > 0 : b가 a보다 앞에 있어야 한다.    
+```js
+배열.sort((a, b)=>{return a - b});
+```
+
+filter()
+조건을 만족하는 요소 새 배열에 담기
+```js
+const 변수 = 배열.filter((요소) => 조건문);
+//예시
+const upTo9000 = itemArr.filter((item) => item.price <= 9000);    //9000원 이하 상품만 새 배열에 담기
+```
