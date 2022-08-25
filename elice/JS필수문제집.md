@@ -147,3 +147,42 @@ function solution(arr) {
   return answer;
 }
 ```
+
+💭 노동요   
+둘의 차이 비교
+```js
+function solution(s) {
+  var answer="";
+  for(var i=0; i<s.length; i++){
+      if(s[i]==" "){
+          answer+="링디기디기\n"
+      }else if(s[i]=="."){
+          answer+="딩딩딩\n"
+      }else{
+          answer+="링딩동 "
+      }
+  }
+
+  return answer;
+
+ // 링딩동 링딩동 링디기디기
+//링딩동 링딩동 링딩동 딩딩딩
+}
+```
+```js
+function solution(s) {
+  var answer=[];
+  for(var i=0; i<s.length; i++){
+      if(s[i]==" "){
+          answer.push("링디기디기\n")
+      }else if(s[i]=="."){
+          answer.push("딩딩딩\n")
+      }else{
+          answer.push("링딩동 ")
+      }
+  }
+
+  return answer;
+  //[ '링딩동 ', '링딩동 ', '링디기디기\n', '링딩동 ', '링딩동 ', '링딩동 ', '딩딩딩\n' ]
+}
+```
