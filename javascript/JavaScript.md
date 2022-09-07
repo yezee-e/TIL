@@ -66,7 +66,7 @@ fruit[2]= "tomato"
 console.log(fruit)//인덱스2번째자리에 tomato변경
 
 console.log(fruit.includes("apple"))//true
-// console.log(fruit.indexOf("apple"))//1
+console.log(fruit.indexOf("apple"))//1
 
 console.log(fruit.slice(2))//grape,mango
 console.log(fruit.slice(1,3))//apple,grape
@@ -87,7 +87,7 @@ console.log(array.length) // 3이 나옴, 배열에 아이템이 총 3개라서
 >arry는 [] ->사용   
  객체는 {} ->사용
 
- > arry는 ->설명이 필요하지 않은 데이터 리스트
+ > arry는 ->설명이 필요하지 않은 데이터 리스트    
   object->설명이 필요한 정보가 담긴 데이터 리스트
 
 예시1)
@@ -301,13 +301,13 @@ console.log(answer)
 //범위 안에 숫자입니다
 ```
 
-예시3)   
->레포트 점수에따라 등급을 매기는 프로그램을 만드시오
-90~100 : A   
-80~89 : B   
-70~79 : C   
-60~69 : D   
-less than 59 : F
+예시3)      
+>레포트 점수에따라 등급을 매기는 프로그램을 만드시오      
+90 ~ 100 : A   
+80 ~ 89 : B   
+70 ~ 79 : C   
+60 ~ 69 : D   
+less than 59 : F   
 
 ```js
 //내가 만든것
@@ -373,7 +373,7 @@ console.log(grade)
 
  ### innerHTML과 textContent차이
  ***
- * **innerHTML** - elementm의 HTML,XML을 읽어오거나 설정할 수 있다. 태그 안에 있는 HTML전체 내용을 들고옴
+ * **innerHTML** - element의 HTML,XML을 읽어오거나 설정할 수 있다. 태그 안에 있는 HTML전체 내용을 들고옴
  * **textContent** - 해상 노드나 가지고 있는 텍스트 값을 그대로 가져옴
 
  ```js
@@ -547,7 +547,7 @@ li.appenChild(span)
 * toLowerCase() - 소문자로 변환
 * toUpperCase() - 대문자로 변환
 
-### addeventlister의 정보받기
+### addEventLister의 정보받기
 ***
 클릭한 버튼 좌표 찾기 ->event.target
 ````js

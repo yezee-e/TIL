@@ -66,36 +66,64 @@ color:red;
 
 ### css style
 ***
-* float -이미지 또는 html태그 _요소를 배치하는데 쓰임_. float를 쓰게되면 해당 영역의 사이즈가 float을 포함하고 있는 컨텐츠 영역 만큼 줄어듬
+* float   
+ -이미지 또는 html태그 _요소를 배치하는데 쓰임_. float를 쓰게되면 해당 영역의 사이즈가 float을 포함하고 있는 컨텐츠 영역 만큼 줄어듬
 
-* text-decoration -밑줄치기, 가운대로 긋기 등 텍스트에 여러 효과를 줄 수 있다. 주로 a태그의 거슬리는 스타일 중 하나인 밑줄을 제거하는데 많이 쓴다
+* text-decoration    
+-밑줄치기, 가운대로 긋기 등 텍스트에 여러 효과를 줄 수 있다. 주로 a태그의 거슬리는 스타일 중 하나인 밑줄을 제거하는데 많이 쓴다
 
-* border -div태그로 영역을 나눠도 영역이 얼마나 큰지,어디에 위치하는지 잘 보이지 않을때가 있다. 이때 border을 통해 div 또는 다른 태그들에 태두리를 그림으로서 해당 태그가 얼마나 맣은 영역을 차지하는지 확인   
+* border     
+-div태그로 영역을 나눠도 영역이 얼마나 큰지,어디에 위치하는지 잘 보이지 않을때가 있다. 이때 border을 통해 div 또는 다른 태그들에 태두리를 그림으로서 해당 태그가 얼마나 맣은 영역을 차지하는지 확인   
 ex)border:1px solid red(두께,테두리,색깔)
 
-* hover -css스타일로 이벤트가 발생했을때의 스타일도 줄수있다   
+* hover    
+-css스타일로 이벤트가 발생했을때의 스타일도 줄수있다   
 마우스가 태그위로 올라왔을때 발생하는 이벤트 //이외에도 active,focus 등이 있다.
 
-* display -요소가 어떻게 보여질지를 결정
-* border-radius -모서리를 둥글게함
-* width -넓이지정 
-* height -높이지정
-* postion -HTML태그의 위치시키는 방식 지정
-* font-family -폰트 스타일
-* box-shadow -박스뒤그림자
-* opacity -투명도
-* z-index -숫자가 작을수록 낮은 layer, 클수록 위의 layer    
-fixed, absolute position에 이용 가능.
+* display    
+-요소가 어떻게 보여질지를 결정
+* border-radius   
+ -모서리를 둥글게함
+* width    
+-넓이지정 
+* height    
+-높이지정    
+* postion    
+-HTML태그의 위치시키는 방식 지정
+* font-family     
+-폰트 스타일
+    ```css
+    #title {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    }
+    ```
+    "Times New Roman"만 ""(쌍따옴표)로 감싸져 있는데, 폰트 이름에 띄워쓰기가 되어있으면 ""(쌍따옴표)를 사용    
+    사용자가 어떤 브라우저를 사용할지 모르기 때문에 font-family 값에는 보통 여러가지 폰트를 나열합니다. 가장 뒤에 위치한 serif같은 폰트는 모든 브라우저에서 지원하는 폰트
+
+* box-shadow     
+-박스뒤그림자
+* opacity     
+-투명도
+* z-index      
+-숫자가 작을수록 낮은 layer, 클수록 위의 layer    
+fixed, absolute position에 이용 가능.    
 default: 0    
-*  box-sizing:border-box - padding에 상관없이 box의 크기를 변경하고 싶지 않을경우 사용    
+*  box-sizing:border-box     
+-padding에 상관없이 box의 크기를 변경하고 싶지 않을경우 사용    
 즉, 박스의 크기를 유지한채 paddig을 줄 수 있다  
-   * 보통    
+-보이는대로 width 값을 주고, 그 후에 그 안 쪽으로 padding을 주는 것   
+-보통 아래와 같이 사용
+   ```css   
       position:ficxed;   
        width:100%:;    
        box-sizing: border-box;    
-       와 같이 사용
-* visibility:hidden - 공간은 그대로 두고 보이지만 않는것   
-   display:none - 잡아둔 공간도 사라짐
+   ```
+<br/>
+
+* visibility:hidden    
+    - 공간은 그대로 두고 보이지만 않는것       
+* display:none 
+   - 잡아둔 공간도 사라짐
 
 
 
