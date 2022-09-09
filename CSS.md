@@ -5,11 +5,12 @@
 ````css
         .red{
     color:red;
-    background-color:yellow;
+    background-color:yellow; 
     text-align: center;
 
         }
 ````
+
 **테두리/폭/높이**
 ```css
         .border-blue{
@@ -27,6 +28,7 @@
     margin-top:40px;
     margin-left:100px;
     margin-bottom:40px;
+    margin:auto; /* 요소를 가로중앙에 위치 */
         }
 ```
 **요소 안쪽에 공간은 padding**
@@ -67,8 +69,9 @@ color:red;
 ### css style
 ***
 * float   
- -이미지 또는 html태그 _요소를 배치하는데 쓰임_. float를 쓰게되면 해당 영역의 사이즈가 float을 포함하고 있는 컨텐츠 영역 만큼 줄어듬
-
+ -주로 이미지 주변에 텍스트를 감싸기 위해 만들어진 프로퍼티   
+ -이미지 또는 html태그 _요소를 배치하는데 쓰임_. float를 쓰게되면 해당 영역의 사이즈가 float을 포함하고 있는 컨텐츠 영역 만큼 줄어듬   
+ -float 속성에는 left, right, none 가운데 하나를 값으로 줄 수 있다
 * text-decoration    
 -밑줄치기, 가운대로 긋기 등 텍스트에 여러 효과를 줄 수 있다. 주로 a태그의 거슬리는 스타일 중 하나인 밑줄을 제거하는데 많이 쓴다
 
@@ -81,15 +84,21 @@ ex)border:1px solid red(두께,테두리,색깔)
 마우스가 태그위로 올라왔을때 발생하는 이벤트 //이외에도 active,focus 등이 있다.
 
 * display    
--요소가 어떻게 보여질지를 결정
+-요소가 어떻게 보여질지를 결정(block,inline-block,none 등)
+
 * border-radius   
  -모서리를 둥글게함
+
 * width    
 -넓이지정 
+
 * height    
 -높이지정    
+
 * postion    
 -HTML태그의 위치시키는 방식 지정
+-top, right, bottom, left는 postion이라는 프로퍼티가 있을 때만 적용되는 프로퍼티
+
 * font-family     
 -폰트 스타일
     ```css
@@ -113,11 +122,22 @@ default: 0
 즉, 박스의 크기를 유지한채 paddig을 줄 수 있다  
 -보이는대로 width 값을 주고, 그 후에 그 안 쪽으로 padding을 주는 것   
 -보통 아래와 같이 사용
-   ```css   
+   ```css      
       position:ficxed;   
        width:100%:;    
        box-sizing: border-box;    
    ```
+   
+* background-size 속성   
+ width와 height를 300px로 만들면 이미지를 담는 영역인 .bgImg크기만 줄인것이고, 배경이미지의 실제 크기는 원본크기 그대로 이면서,
+ 그 중에서 .bgImg 의 크기(300px*300px)만큼만 보여지는 것
+
+  이럴 때는 아래와 같이 background-size 속성을 사용하여 배경이미지 크기를 조정
+   ```css
+   .bgImg {
+   background-size: 100%;
+    }
+    ```
 <br/>
 
 * visibility:hidden    
@@ -137,6 +157,8 @@ default: 0
 
 **padding:10px 20px 30px 40px** ->첫번째부터 top,left,bottom,right순으로 공간을 적용
 
+margin에 auto로 설정하면 요소를 가로 중앙에 위치
+
 ### position 속성값
 ***
 
@@ -144,7 +166,8 @@ default: 0
 * **absolute**: 부모 절대값 기준으로 옮김( 부모 영역에서 left, right, top, bottom을 이용해 주어진 위치로 움직임)   
  가장 가까운 releative부모를 기준으로 이동
 position:relative; 를 해주면 부모가 된다.
-없으면 body.
+없으면 body.    
+absolute값을 가지게 되면, 내용의 크기만큼만이 가로크기
 
 * **static**:  left.top 등을 이해하지 못함 즉, 자기 자리만 지킴(브라우저의 기본속성)
 
@@ -216,6 +239,22 @@ flex-wrap:
  * space-between: 여러 줄들 사이에 동일한 간격을 둡니다.
  * space-around: 여러 줄들 주위에 동일한 간격을 둡니다.
  * stretch: 여러 줄들을 컨테이너에 맞도록 늘립니다.
+
+### block 요소와 inline 요소
+***
+* block요소     
+대부분의 HTML element는 block 요소   
+`<header>, <footer>, <p>, <li>, <table>, <div>, <h1>` 등     
+block 요소의 의미는, 이 요소 바로 옆(좌우측)에 다른 요소를 붙여넣을 수 없다는 뜻(가로 전체를 차지)   
+
+* inline요소     
+`<span>, <a>, <img>` 태그 등   
+inline이라는 말 그대로 inline 요소는 요소끼리 서로 한 줄에, 바로 옆에 위치할 수 있다는 뜻   
+
+<br/>
+
+아무 태그나 사용해도 결국은 CSS를 통해 얼마든지 성질을 바꿀 수 있다
+inline 성질을 갖도록 하는 CSS property는 `display` 와 `float` 이 있다
 
 
 ### 의미론적인 태그(semantic elements)

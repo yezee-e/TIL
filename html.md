@@ -5,51 +5,59 @@ html은 부모,자식 태그로 만들어져있다
 ### 🎈태그배우기
 <br/>
 
-**H1 제목** 
+**`<H1></H1>` 제목** 
  <br/>
 
- **U 밑줄** 
+ **`<U></U>` 밑줄** 
 <br/>
 
-**a 링크** 
+**`<a></a>` 링크** 
 <br/>
 
-**strong 강조** 
+**`<strong></strong>` 강조** 
 <br/>
 
- **input 문자판숫자,문자,암호 넣기가능**    
- - 태그의 required 속성은 폼 데이터(form data)가 서버로 제출되기 전 반드시 채워져 있어야 하는 입력 필드를 명시합니다.
- 
-- form태그를 사용하면 자동으로 페이지 유효성 검사가 가능하다(예를들어, 공란이나 엔터 등을 관리)    
-- form을 submit하면 브라우저는 기본적으로 페이지를 새로고침 하도록 되어있다. << 우리가 원하는 것이 아님!    
-- preventDefault() 함수를 추가함으로써 브라우저의 기본 동작을 막을 수 있다!!   
+ **`<input>``<textarea>` 사용자가 직접 텍스트를 입력할 수 있는 태그**  
+  * input
+    - 문자판숫자,문자,암호 넣기가능  
+    - 태그의 required 속성은 폼 데이터(form data)가 서버로 제출되기 전 반드시 채워져 있어야 하는 입력 필드를 명시합니다.
+    
+    - form태그를 사용하면 자동으로 페이지 유효성 검사가 가능하다(예를들어, 공란이나 엔터 등을 관리)    
+    - form을 submit하면 브라우저는 기본적으로 페이지를 새로고침 하도록 되어있다. << 우리가 원하는 것이 아님!    
+    - preventDefault() 함수를 추가함으로써 브라우저의 기본 동작을 막을 수 있다!!   
 
-    ```js
-    function onLoginSubmit(event){
-    event.preventDefault(); // 브라우저가 기본 동작을 실행하지 못하게 막기    
-    // event object는 preventDefault함수를 기본적으로 갖고 있음
-    console.log(event);
-    }
-    ```
+        ```js
+        function onLoginSubmit(event){
+        event.preventDefault(); // 브라우저가 기본 동작을 실행하지 못하게 막기    
+        // event object는 preventDefault함수를 기본적으로 갖고 있음
+        console.log(event);
+        }
+        ```
+* textarea   
+input보다는 더 긴 텍스트를 입력받고 싶을 때 사용   
+보통 짧은 방명록이나 댓글을 입력할때 사용
 
 <br/>
 
- **button 버튼** 
+ **`<button></button>` 버튼** 
 <br/>
 
- **img 이미지넣기** 
+ **`<img>` 이미지넣기**    
+* img 태그에 사용된 속성
+  * alt: 이미지가 불러올 수 없을 때(서버에서 이미지가 삭제됐거나 잘못된 이미지 주소일 때..), 이미지 대신 보여줄 텍스트
+  * src: 이미지 파일 경로 혹은 이미지 url 주소
 <br/> 
 
-**div 줄바꾸기** 
+**`<div></div>` 줄바꾸기** 
 <br/>
 
-**p 줄바꾸기** 
+**`<p></p>` 줄바꾸기** 
  <br/>
 
-**span 그룹을 나누어 주되 다른 기능은 없음** 
+**`<span></span>` 그룹을 나누어 주되 다른 기능은 없음** 
  <br/>
 
-**form**   
+**`<form></form>`**   
 2가지 속성(attribute)->하나는 action이고, 다른 하나는 method이다.
 
     -action은 어떤 페이지로 data를 보낼건지 지정    
@@ -59,16 +67,31 @@ html은 부모,자식 태그로 만들어져있다
     - POST는 백엔드 서버에 정보를 전송하는 방식    
     - GET 방식은 보안에 취약하다. username이랑 password를 GET 방식으로 보내선 안된다. URL에 포함되어도 상관없는 정보들을 GET 방식으로   보내는 것
 
-**ol 번호 리스트 만들기**
+**`<li></li>, <ol></ol>, <ul></ul>`리스트 만들기**   
+목록 아이템 하나하나를 `<li>` 태그로 감싸준다       
+목록은 항상 `<ul>` 나 `<ol>`태그로 감싸야 한다(아무 스타일도 넣고 싶지 않다고 `<il>`태그만 사용불가)    
+`<ol>`은 ordered list라는 의미로, 목록에 숫자를 달아준다   
+즉, 자동으로 numbering
+
+`<ul>`태그는 unordered list라는 의미로 숫자없는 목록을 표현(점으로 표현)
+
 <br/>
 
-**ul 점 리스트만들기**
- <br/>
 
- **blockquote**   
+ **`<blockquote></blockquote>`**   
  인용구문을 넣을 때 쓰는 태그  
  양쪽 여백을 넣는 기본 스타일을 자동으로 적용
   <br/>
+
+**`<table></table>` 표만들기**    
+테이블은 항상 `<table>`태그로 감싸져있다 , 태그 내에 행도 만들고 열도 만드는 것    
+한 행을 시작할 때는 `<tr>`로 시작 -> tr은 table row의 줄임말    
+각각의 셀은 `<tr>`태그 내에 `<td>`태그를 사용 -> td는 table data의 줄임말    
+`<th>`태그 -> th는 table heading의 줄임말 
+
+병합은 `<td>` 나 `<th>`태그에 colspan, rowspan이라는 attribute를 추가해서 구현   
+rowspan은 행 병합, colspan은 열을 병합
+
 
 
 ### 🎈learn more
