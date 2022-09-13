@@ -90,6 +90,66 @@ console.log(array.length) // 3이 나옴, 배열에 아이템이 총 3개라서
  > arry는 ->설명이 필요하지 않은 데이터 리스트    
   object->설명이 필요한 정보가 담긴 데이터 리스트
 
+* 객체 속성 추가
+객체를 생성한 후, 속성을 지정하고 값을 입력하면, 객체에 속성을 추가할 수 있다
+```js
+객체.키 ="값"
+객체["키"]="값"
+```
+
+* 객체 속성 제거
+```js
+delete 객체[속성]
+delete 객체["속성"]
+
+delete 객체.속성
+```
+
+* 객체 안의 객체 접근
+```js
+function accessObject(){
+  let myStorage={
+    "car":{
+      "inside":{
+        "glove box":"maps",
+        "passenger seat":"crumbs"
+      },
+      "outside":{
+        "trunk":"jack"
+      }
+    }
+  }
+  gloveBoxContents=myStorage["car"]["inside"]["glove box"]
+  return gloveBoxContents; //map
+}
+```
+* 객체 안의 배열 접근
+```js
+function accessArray(){
+  let myplants=[
+    {
+      type:"flowers",
+      list:[
+        "rose",
+        "tulip",
+        "dandelion"
+      ]
+    },
+    {
+      type:"trees",
+      list:[
+        "fir",
+        "pine",
+        "birch"
+      ]
+    }
+  ];
+  foundValue=myPlants[1]["list"][1]
+  return foundValue; //pine
+}
+```
+
+객체의 다른예시-
 예시1)
 ```js
 let patient ={
