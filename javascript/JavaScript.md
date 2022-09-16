@@ -90,7 +90,7 @@ console.log(array.length) // 3이 나옴, 배열에 아이템이 총 3개라서
  > arry는 ->설명이 필요하지 않은 데이터 리스트    
   object->설명이 필요한 정보가 담긴 데이터 리스트
 
-* 객체 속성 추가
+* 객체 속성 추가   
 객체를 생성한 후, 속성을 지정하고 값을 입력하면, 객체에 속성을 추가할 수 있다
 ```js
 객체.키 ="값"
@@ -435,14 +435,16 @@ console.log(grade)
  ***
  * **innerHTML** - element의 HTML,XML을 읽어오거나 설정할 수 있다. 태그 안에 있는 HTML전체 내용을 들고옴
  * **textContent** - 해상 노드나 가지고 있는 텍스트 값을 그대로 가져옴
+ * **innerText** - textcontent랑 비슷하지만 textcontent는 모든 요소를 반환하는 반면 
+ innerText는 사람이 읽을 수 있는 요소만 가져옴(예시로 스페이스바를 한칸만 남기고 가져온다)
 
  ```js
- <div id="test"><span>hi</span></div> //html에 이런 태그가 있다고 가정할때
+ <div id="test"><span>Hello     world</span></div> //html에 이런 태그가 있다고 가정할때
 
-console.log(document.getElementById("test").innerHTML) //<span>hi</span>
-console.log(document.getElementById("test").textContent) //hi
+console.log(document.getElementById("test").innerHTML) //<span>Hello     world</span>
+console.log(document.getElementById("test").textContent) //Hello      world
+console.log(document.getElementById("test").innerText) //Hello world
 ```
-
 
 
 
