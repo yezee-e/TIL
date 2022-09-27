@@ -87,6 +87,9 @@ div {
 - div + span { } : div의 바로 아래있는 형제 span 선택.(형제 자식에게 스타일을 적용)
 - div~span{ }: div와 같은 부모를 공유하는 모든 span 선택(바로 뒤에 오는 형제 관계가 아닌 tag에도 스타일을 적용)
 
+5.  CSS 적용 우선순위  
+    tag << class <<<< id <<<<<<< inline css
+
 ### css style
 
 ---
@@ -98,9 +101,8 @@ div {
 
   - float 문제해결
 
-
-      1. 바깥 div마지막에 아무태그나 넣고 clear속성을 적용(단점은 html코드가 늘어남)
-      2. 바깥 div에 overflow:hidden;을 주는 것
+    1. 바깥 div마지막에 아무태그나 넣고 clear속성을 적용(단점은 html코드가 늘어남)
+    2. 바깥 div에 overflow:hidden;을 주는 것
 
 - text-decoration  
   -밑줄치기, 가운대로 긋기 등 텍스트에 여러 효과를 줄 수 있다. 주로 a태그의 거슬리는 스타일 중 하나인 밑줄을 제거하는데 많이 쓴다
