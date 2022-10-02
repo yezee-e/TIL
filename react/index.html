@@ -18,25 +18,67 @@
   <script type="text/babel">
     const root = document.getElementById('root');
 
-    function App() {
-      const [minutes, setMinutes] = React.useState();
+    function MinutesToHours() {
+      const [amount, setAmount] = React.useState();
+      const [inverted, setInverted] = React.useState(false); //변환시켜주는 함수
       const onChange = (event) => {
-        setMinutes(event.target.value);
+        setAmount(event.target.value);
+      };
+      const onReset = () => setAmount(0);
+      const onInvert = () => {
+        onReset();
+        setInverted((current) => !current); //inverted값을 반대로 전환시키는 역활
+      };
+
+      return (
+        <div>
+          <div>
+            <label htmlFor='minutes'>Minutes</label>
+            <input
+              value={inverted ? amount * 60 : amount}
+              placeholder='Minutes'
+              type='number'
+              id='minutes'
+              onChange={onChange}
+              disabled={inverted} //inverted가 true라면 이, input은 disabled
+            />
+          </div>
+          <div>
+            <label htmlFor='hours'>Hours</label>
+            <input
+              value={inverted ? amount : amount / 60}
+              placeholder='Hours'
+              type='number'
+              id='hours'
+              onChange={onChange}
+              disabled={!inverted} //disabled:입력할수없는상태로 만듬 //inverted가 false라면 이, input은 disable
+            />
+          </div>
+          <button onClick={onReset}>Reset</button>
+          <button onClick={onInvert}>
+            {inverted ? 'Turn back' : 'Invert'}
+          </button>
+        </div>
+      );
+    }
+    function KmToMiles() {
+      return <h3>KM 2 M</h3>;
+    }
+
+    function App() {
+      const [index, setIndex] = React.useState('0');
+      const onSelect = (event) => {
+        setIndex(event.target.value);
       };
       return (
         <div>
-          <h1 className='hi'>Super Converter</h1>
-          <label htmlFor='minutes'>Minutes</label>
-          <input
-            value={minutes}
-            placeholder='Minutes'
-            type='number'
-            id='minutes'
-            onChange={onChange}
-          />
-          <h4>You want to convert{minutes}</h4>
-          <label htmlFor='hours'>Hours</label>
-          <input placeholder='Hours' type='number' id='hours' />
+          <h1>Super Converter</h1>
+          <select value={index} onChange={onSelect}>
+            <option value='0'>Minutes & Hours</option>
+            <option value='1'>Km & Miles</option>
+          </select>
+          <hr />
+          {index == '0' ? <MinutesToHours /> : <KmToMiles />}
         </div>
       );
     }
