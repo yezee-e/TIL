@@ -83,17 +83,25 @@ function Btn({ text }) {
 
 - **useEffect** => 코드가 딱 한번만 실행될 수 있도록 보호
   코드의 실행 시점을 관리할 수 있는 선택권을 얻는 방어막 같은 존재, 디펜던시가 없을 경우 최초 1회 실행,  
-  있을경우 해당값이 변할 경우 실행한다. 이때 디펜던시는 여러개 입력이 가능
-  대표적인 사용법은 API를 딱 한번만 호출하고 그 뒤로는 다시 호출하기 싫은 경우  
+  디펜던시가 있을경우 해당값이 변할 경우 실행한다. 이때 디펜던시는 여러개 입력이 가능
+  대표적인 사용법은 API를 딱 한번만 호출하고 그 뒤로는 다시 호출하기 싫은 경우
+
+  cleanup function: 컴포넌트가 destroy될 때도 코드를 실행할 수 있다(return으로 함수를 만들어준다)  
+  useEffect의 subscription을 종료할 때 즉, 컴포넌트가 unmount될 때 실행할 로직은 useEffect의 EffectCallback에서 반환되는 함수로 구현한다  
+  여기서 반환되는 함수를 cleanup function이라고 부르고 메모리 누수를 방지하기 위해 사용
+
   useeffect는 화면이 다 그려지고 나서 실행된다.
+
   ```js
   useEffect(() => {
     console.log("i run when 'keyword and counter' changes.");
+    return () => console.log('destroyed:('); //Cleanup(컴포넌트가 정리 될 때도 코드를 실행)
   }, [keyword, counter]);
   //[]자리에 특정한 코드만 변화했을 때 원하는 코드들을 실행할 수 있는 방법(즉, []변화할 때 코드를 실행할 거라고 react.js에게 알려주는 것)
   // 빈 array를 써주었을 때는 react가 지켜볼게 아무것도 없으니 처음 한번만 실행되는 것
   //[]안에 여러 디팬던시 입력가능
   ```
+
 - **React.momo()** => 불필요한 re-render를 관리  
   고차 컴포넌트(higher order component)  
   컴포넌트가 동일한 pros로 동일한 결과를 렌더링 해낸다면 React.momo를 호츨하고 결과를 메모이징(memoizing)하도록 래핑하여  
