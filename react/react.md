@@ -32,7 +32,9 @@ useState()는 array를 제공한다
 2. 함수를 할당: setCounter((current) => current + 1)
 
 > 현재 state랑 관계없는 값을 새로운 state로 하고 싶은 경우에는 (1)
-> 현재 state에 조금의 변화를 주어 새로운 state를 주고 싶은 경우에는 (2)
+
+> 현재 state에 조금의 변화를 주어 새로운 state를 주고 싶은 경우에는 (2)  
+> 함수를 보낼 때 react.js는 함수의 첫번째 argument로 현재 state를 보내어 현재 state를 계산하거나 새로운 state를 만드는데 사용할 수 있게 된다
 
 ```js
 function App() {
