@@ -485,12 +485,13 @@ console.log(document.getElementById('test').textContent); //Hello      world
 console.log(document.getElementById('test').innerText); //Hello world
 ```
 
-### events
+### Html in javascript
 
 ---
 
-> - title.onclick = handleMouseEnter;
-> - title.addEventListener(“mouseenter” , handleMouseEnter);
+- **event**
+  > - title.onclick = handleMouseEnter;
+  > - title.addEventListener(“mouseenter” , handleMouseEnter);
 
 위에 두 코드는 동일하나 addEventListener를 선호하는 이유는
 removeEventListener을 통해서 event listener을 제거할수있기 때문이다.
@@ -508,6 +509,14 @@ function onLoginSubmit(event) {
   console.log(event);
 }
 ```
+
+- **요소의 속성 다루는 메서드**
+
+  > - .getAttribute("") 요소의 속성 값을 반환하는 방법
+
+  > - .removeAttribute("") 요소의 속성 값을 제거하는 방법
+
+  > - .setAttribute("") 요소에 속성을 추가하는 방법
 
 ### css in javascrpit
 
