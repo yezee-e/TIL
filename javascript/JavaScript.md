@@ -1130,6 +1130,39 @@ const callAPI = async () => {
 };
 ```
 
+api부르는 방법들
+
+```js
+//fatch then사용방법
+fetch(`https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year`)
+  .then((res) => {
+    res.json();
+  })
+  .then((json) => {
+    setMovies(json.data.movies);
+    setLoading(false);
+  });
+//async/awiat사용방법(1)
+const getMovies = async () => {
+  const response = await fetch(
+    `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year`
+  ); //api가져오기
+  const json = await response.json(); //response에서 결과물을 뽑아내는 과정
+  setMovies(json.data.movies);
+  setLoading(false);
+};
+//async/awiat사용방법(2)
+const getMovies = async () => {
+  const json = await (
+    await fetch(
+      `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.8&sort_by=year`
+    )
+  ).json(); //api가져오기와 response에서 결과물 뽑는 과정을 동시에 진행
+  setMovies(json.data.movies);
+  setLoading(false);
+};
+```
+
 ### 에러 핸들링
 
 ---
