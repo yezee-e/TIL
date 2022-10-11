@@ -125,6 +125,63 @@ react에서 css를 사용하는 방법은 다양하다
 
   <br/>
 
+## react router
+
+> **라우팅이란?🧐**
+> 사용자가 요청한 URL에 따라 해앋 URL에 맞는 페이지를 보여주는 것
+> URL및 특정한 HTTP요청메소드(GET,POST...)인 특정 엔드포인트에 대한 클라이언트 요청에 어플리케이션이 응답하는 방법을 결정한다
+
+- 종류:가장 많이 사용하는 라우터 컴포넌트는
+  1.BrowserRouter:HTML5를 지원하는 브라우저의 주소를 감지
+  2.HashRouter:해시주소를 감지,뒤에 #을 붙인다(예를 들어 localhost:3001/#/movie)
+- 설치
+  `npm install react-router-dom`
+
+![](https://velog.velcdn.com/images/yezee/post/b4f3dc8e-afb7-4c29-b74c-5d345d44919b/image.png)
+
+라우터(브라우저 라우터)를 import한다
+`import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';`
+
+Router>Routes>Route 순으로 컴포넌트가 구성되어 있다
+
+- `Router`:path에 따라 랜더링해주는 역할
+- `Routes`:한번에 하나의 Route만 렌더링 하기 위해서
+- `Route`: 경로(=path)와 보여줄 컴포넌트(=element)를 명시한다
+
+## parameters
+
+Routes의 path 뒤에 `:변수명`는 파라미터를 사용하기 위해 쓰이는 변수다
+
+```js
+<Route path='/movie/:id' element={<Detail />} />
+```
+
+` const { 변수명 } = useParams();` 로 파라미터를 import한다
+fetch를 통해 받아온 URL에 변수를 같이 넣어 사용하면 원하는 URL을 정확히 가져올 수 있다
+
+```js
+import { useParams } from 'react-router-dom';
+
+const { id } = useParams();
+const getMovie = async () => {
+  const json = await (
+    await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
+  ).json();
+  console.log(json);
+};
+```
+
+## `<Link></Link>`컴포넌트
+
+HTML에서는 원래 링크를 만들 때 a태그를 사용한다. 하지만 a태그는 클릭시 페이지를 새로 불러오기 때문에 React에서는 Link를 사용
+
+```js
+import { Link } from 'react-router-dom'; //Link컴포넌트사용
+<Link to={`경로${변수명}`}>{링크명}</Link>;
+```
+
+Link컴포넌트에서 to={}안에 경로에 변수를 이용해서 브라우저 주소의 경로만 바꿔 보여주는 것이 가능하다
+
 ## aid
 
 /_eslint-disable_/ lint(warning message)끄는 말(맨위에 포스트)
