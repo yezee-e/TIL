@@ -15,9 +15,14 @@ npm i prop-types :prop-type변경에 warning을 주는 기능(이때 i는 instal
   class는 className으로 for은 htmlFor로 바꿔서 쓴다  
   -변수를 넣을 땐 { } ->데이타바인딩  
   -style 넣을 땐 style={{스타일명:"값"}}
+
   > `<h4 style={{color:"red",fontSize="16px"}}></h4>`  
-  >  기존의 css는 font-size로 표기하지만 js파일이기 때문에 -로 인식한다
+  >  기존의 css는 font-size로 표기하지만 js파일이기 때문에 -로 인식한다  
   > 따라서 카멜문법을 사용하여 스타일 부여
+
+  -jsx closing `<div/>`와 같이 닫는 태그를 부여해줘야한다, 셀프 클로징도 가능 -모든 JSX tag는 하나의 부모 tag로 감싸져있어야 한다  
+  -React.Fragment tag(실제 dom에는 추가되지 않으면서 jsx들을 그룹화 하기 위해서만 사용)  
+  같은 효과를 위해 빈꺽쇠가 열리고 닫히는 형태로 표현 `<></>`
 
 ## STATE
 
