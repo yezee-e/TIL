@@ -640,6 +640,23 @@ ex) "Hello".padStart(10,"x") // xxxxxHello
 const todayQuote = quotes[Math.floor(Math.random() * quotes.length)];
 ```
 
+- Math.sign() 음수기호 처리하기
+  이 함수를 사용하면 현재 사용된 값이 양수, 음수 그리고 0 중 어떤 것인지 확인하여 각각 1, -1, 0으로 반환해준다
+
+```js
+//Math.sign()에는 5개의 가능한 반환 값이 있습니다.
+Math.sign(8); // 1
+Math.sign(-8); // -1
+
+Math.sign(0); // 0
+Math.sign(-0); // -0
+
+Math.sign(NaN); // NaN
+Math.sign('hello'); // NaN
+Math.sign(); //NaN
+이 함수에 전달된 인수는 암시적으로 number 유형으로 변환한다
+```
+
  <br/>
 
 📌  
