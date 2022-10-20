@@ -197,6 +197,12 @@ import { Link } from 'react-router-dom'; //Link컴포넌트사용
 
 Link컴포넌트에서 to={}안에 경로에 변수를 이용해서 브라우저 주소의 경로만 바꿔 보여주는 것이 가능하다
 
-## aid
+## 알아두면 짱 유용할껄??
 
-/_eslint-disable_/ lint(warning message)끄는 말(맨위에 포스트)
+- /_eslint-disable_/ lint(warning message)끄는 말(맨위에 포스트)
+- Reactjs code snippets 단축키  
+  rsc-화살표 함수형 컴포넌트 생성  
+  rsf-함수형 컴포넌트생성  
+  ( 뒤에 p를 추가하면 propTypes 구조를 추가해준다!!)
+
+  imr-리액트가져오기(=import React form "react")
