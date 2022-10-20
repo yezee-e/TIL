@@ -33,7 +33,7 @@ npm i prop-types :prop-type변경에 warning을 주는 기능(이때 i는 instal
 ## STATE
 
 state 언제 싸야함? 변동시 자동으로 html에 반영되게 하고 싶은면 사용  
-🐝 **useState()**  
+🐝 **`useState()`**  
 useState()는 array를 제공한다  
 배열의 첫번째 값은 초기값이고 두번째 요는 그 값을 바꾸는 함수
 
@@ -75,8 +75,9 @@ function App() {
 부모 컴포넌트로부터 자식 컴포넌트에게 데이터를 전송하는 방식  
 부모에 props를 사용하면 자식 컴포넌트(함수)의 인자로 객체가 들어가게된다  
 prop에 function도 보낼 수 있다  
-`<Btn onClick={changeValue}/>` 는 이벤트 리스너를 붙인것이 아닌 , 컨포넌트에 onClick이라는 프롭을 전달한것(여기서 onClick은 단순히 props의 이름이다)  
-결론은 **컴포넌트에는 HTML element처럼 속성을 지정해줄 수 없다.
+`<Btn onClick={changeValue}/>` 는 이벤트 리스너를 붙인것이 아닌 , 컨포넌트에 onClick이라는 프롭을 전달한것(여기서 onClick은 단순히 props의 이름이다)
+
+**결론은 컴포넌트에는 HTML element처럼 속성을 지정해줄 수 없다.
 컴포넌트에 그러한 행위를 하는 것은 그저 props를 전달해 주는 것 뿐이다**
 
 ```js
@@ -92,9 +93,25 @@ function Btn({ text }) {
 }
 ```
 
+- **`Prop Types`**  
+  install: `npm i prop-types`  
+   리액트는 파라미터를 잘못넘겨도 확인할 수 없다는 문제점이 존재한다  
+   이런 실수를 줄이기 위해서 PropTypes라는 모듈이 도움을 받을 수 있다  
+   (type과 다를경우 warning을 뜨게할 수 있고 prameter에 값을 넣지 않은 경우에도 경고 메시지를 띄울 수 있다)
+
+  ```js
+  import PropTypes form "prop-types"
+
+  함수명.propTypes={
+    id:PropTypes.number.isRequired, //타입설정과 필수값지정할수있다
+    img:PropTypes.string.isRequired,
+    genres:PropTypes.arrayOf(PropTypes.string),
+  }
+  ```
+
 ## EFFECTS
 
-- **useEffect** => 코드가 딱 한번만 실행될 수 있도록 보호
+- **`useEffect`** => 코드가 딱 한번만 실행될 수 있도록 보호
   코드의 실행 시점을 관리할 수 있는 선택권을 얻는 방어막 같은 존재, 디펜던시가 없을 경우 최초 1회 실행,  
   디펜던시가 있을경우 해당값이 변할 경우 실행한다. 이때 디펜던시는 여러개 입력이 가능
   대표적인 사용법은 API를 딱 한번만 호출하고 그 뒤로는 다시 호출하기 싫은 경우
@@ -119,11 +136,26 @@ function Btn({ text }) {
   //[]안에 여러 디팬던시 입력가능
   ```
 
-- **React.momo()** => 불필요한 re-render를 관리  
+- **`React.memo()`** => 불필요한 re-render를 관리  
+  부모 컴포넌트의 state를 변경하면 그 자식 컴포넌트들도 re-render가 일어남  
+  불필요한 렌더링이 발생할수도 있는데 이 경우에 react.memo()로 prop의 변경이 일어난 부분만 렌더링시킬 수 있다(이즈믾은 자식 컴포넌트를 가지고 있는 부모컨포넌트일 때 사용)  
   고차 컴포넌트(higher order component)  
-  컴포넌트가 동일한 pros로 동일한 결과를 렌더링 해낸다면 React.momo를 호츨하고 결과를 메모이징(memoizing)하도록 래핑하여  
+  컴포넌트가 동일한 pros로 동일한 결과를 렌더링 해낸다면 React.memo를 호츨하고 결과를 메모이징(memoizing)하도록 래핑하여  
   경우에 따라 성능 향상을 누릴 수 있다
   즉, React는 컴포넌트를 렌더링하지 않고 마지막으로 렌더링된 결과를 재사용
+
+  ```js
+  const memorizedBtn = React.memo(btn);
+  function app() {
+    const [value, setvalue] = React.useState('');
+    return (
+      <div>
+        <memorizeBtn text={value} /> //원래 컴포넌트이름이 btn이였지만
+        react.memo()로 컴포넌트사용
+      </div>
+    );
+  }
+  ```
 
   => Memo stops the component from re-rendering if the props haven't changed  
    useEffect runs a function when the props change, or only at the start or end of the component's lifecycle
@@ -135,8 +167,26 @@ react에서 css를 사용하는 방법은 다양하다
 2.html 태그 안에 직접 입력하는 방법. style={{}} 형식으로 입력  
 3.React에서 제공하는 CSS module 이용
 
-- 클래스명이 충돌하는 단점을 해결
+- 클래스명이 충돌하는 단점을 해결(같은 클래스의 이름이라도 클래스이름을 램덤방식으로 생성해줘서 겹치지 않는다)
 - 컴포넌트 단위로 스타일을 적용할 수 있다
+
+```js
+import styles from './App.module.css'; //기존 css와 다르게 파일명에 module을 넣는다
+
+function App() {
+  return (
+    <div>
+      <h1 className={style.title}>welcome!</h1>
+    </div>
+  );
+}
+```
+
+```css
+.title {
+  color: tomato;
+}
+```
 
   <br/>
 
