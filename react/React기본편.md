@@ -150,8 +150,8 @@ function Btn({ text }) {
     const [value, setvalue] = React.useState('');
     return (
       <div>
-        <memorizeBtn text={value} /> //원래 컴포넌트이름이 btn이였지만
-        react.memo()로 컴포넌트사용
+        <memorizeBtn text={value} />
+        //원래 컴포넌트이름이 btn이였지만react.memo()로 컴포넌트사용
       </div>
     );
   }

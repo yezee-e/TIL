@@ -14,3 +14,37 @@ const onInvert = () => {
   setInverted((current) => !current);
 };
 ```
+
+## input으로 리스트만들기
+
+```js
+function Todo(){
+  const [todo,setTodo]=useState("") //input에 입력하는값
+const [toDos,setToDos]=useState([]) //input에 입력한 값의 배열
+const onChange=(e)=>setTodo(e.target.value)
+const onSubmit=(e)=>{
+  e.preventDefault()
+  setToDos((currentArray)=>[todo,...currentArray]) //기존의값을 가진 배열에 새로운 값을 추가
+}
+const deleteBtn=(index)=>{
+  setToDos(todo.filter((item,todoIndex)=>index!==todoIndex))
+}
+  return(
+  <div>
+    <form onSubmit={onSubmit}>
+    <input onChange={onChange} value={todo}/>
+    <button>Add ToDo</button>
+    </form>
+    <ul>
+    {toDos.map((item,index)=><li key={index}>
+    {item}
+    <button onClick={()=>deleteBtn(index)}>❌</button>
+    <li>)}
+    </ul>
+</div>
+  )
+}
+
+```
+
+`onClick={deleteBtn}`이 아닌 `onClick={()=>deleteBtn(index)}`이렇게 쓰는 이유는 "바로실행"되지 않고 클릭을 기다리는 함수로 쓰기위해
