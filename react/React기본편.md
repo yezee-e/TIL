@@ -2,9 +2,11 @@
 
 ## install react
 
-npx create-react-app my-app로 react app설치(my-app 폴더에 개발환경을 세팅하겠다는 뜻)  
-npm start :html에서 open with live server와 같이 미리보기같은 기능  
-npm i prop-types :prop-type변경에 warning을 주는 기능(이때 i는 install의 약자
+`npx create-react-app my-app` react app설치(my-app 폴더에 개발환경을 세팅하겠다는 뜻)  
+`npm start` html에서 open with live server와 같이 미리보기같은 기능  
+`npm i prop-types` prop-type변경에 warning을 주는 기능(이때 i는 install의 약자  
+`npm install react-router-dom` React Router을 사용  
+`npm i gh-pages` 결과물은 github pages에 업로드할 수 있게 해주는 패키지
 
 ## why react?
 
@@ -240,12 +242,59 @@ const getMovie = async () => {
 
 HTML에서는 원래 링크를 만들 때 a태그를 사용한다. 하지만 a태그는 클릭시 페이지를 새로 불러오기 때문에 React에서는 Link를 사용
 
+**단순 경로로 이동**
+
+```js
+import { Link } from 'react-router-dom'; //Link컴포넌트사용
+<Link to='/경로'>{링크명}</Link>;
+```
+
+**변수가 있는 경로로 이동**
+
 ```js
 import { Link } from 'react-router-dom'; //Link컴포넌트사용
 <Link to={`경로${변수명}`}>{링크명}</Link>;
 ```
 
+이동할 변수의 id(값)를 받아와야한다
+`import {useParams} from "react-router-dom"` 을 해당 변수를 가진 컴포넌트 페이지에 install
+
+```js
+import { useParams } from 'react-router-dom';
+
+function Detail() {
+  const { id } = useParams();
+  const getMovie = async () => {
+    const json = await (await fetch(`https://urlulrulr?id=${id}`)).json();
+  };
+}
+export default Detail;
+```
+
 Link컴포넌트에서 to={}안에 경로에 변수를 이용해서 브라우저 주소의 경로만 바꿔 보여주는 것이 가능하다
+
+## Publishing
+
+Route컴포넌트의 path경로 앞에 `process.env.PUBLIC_URL`을 추가해서 수정
+
+```js
+Route path={process.env.PUBLIC_URL+"/"} element={<Home/>}
+또는
+Route path={`${process.env.PUBLIC_URL}/`} element={<Home/>}
+```
+
+`npm i gh-pages` 결과물은 github pages에 업로드할 수 있게 해주는 패키지설치  
+`npm run build` 우리 웹사이트의 production ready code를 생성(코드가 압축되고 모든게 최적화)
+
+build라는 폴더가 생성된다(브라우저가 이해할수있는 코드가 담겨있다)
+
+package.json안에 아래쪽에 homepage를 작성한다  
+`"homepage": "https://<username>.github.io/<github repository name>"`
+
+package.json안에있는 "scripts"안에 deploy와 predeploy를 작성한다
+`"deploy":"gh-pages -d build"`
+`"predeploy":"npm run build"`
+(npm run build를 실행하면 Node.js가 predeploy를 먼저 실행시켜준다,즉 build가 없다면 먼저 만들고 deploy를 실행시켜준다)
 
 ## 알아두면 짱 유용할껄??
 

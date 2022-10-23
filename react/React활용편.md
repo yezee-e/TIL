@@ -27,7 +27,7 @@ const onSubmit=(e)=>{
   setToDos((currentArray)=>[todo,...currentArray]) //기존의값을 가진 배열에 새로운 값을 추가
 }
 const deleteBtn=(index)=>{
-  setToDos(todo.filter((item,todoIndex)=>index!==todoIndex))
+  setToDos(todo.filter((item,todoIndex)=>index!==todoIndex)) //리스트제거버튼
 }
   return(
   <div>
@@ -48,3 +48,91 @@ const deleteBtn=(index)=>{
 ```
 
 `onClick={deleteBtn}`이 아닌 `onClick={()=>deleteBtn(index)}`이렇게 쓰는 이유는 "바로실행"되지 않고 클릭을 기다리는 함수로 쓰기위해
+
+## fetch
+
+**fetch-then**
+
+```js
+const [coins, setCoins] = useState([]);
+
+function App() {
+  useEffect(() => {
+    fetch('<url>')
+      .then((res) => res.json())
+      .then((json) => setCoins(json));
+  }, []);
+
+  return (
+    <select>
+      {coins.map((coin) => (
+        <option>{coin.name}</option>
+      ))}
+    </select>
+  );
+}
+```
+
+**async-await(1)**
+await는 async 함수 내부에 있지 않으면 사용할 수 없다
+
+```js
+const [coins, setCoins] = useState([]);
+
+function App() {
+  const getCoins = async () => {
+    const response = await fetch('<url>');
+    const json = await response.json();
+    setCoins(json);
+  };
+
+  useEffect(() => {
+    getCoins();
+  }, []);
+
+  return (
+    <select>
+      {coins.map((coin) => (
+        <option>{coin.name}</option>
+      ))}
+    </select>
+  );
+}
+```
+
+**async-await(2)**
+
+```js
+const [coins, setCoins] = useState([]);
+
+function App() {
+  const getCoins = async () => {
+    const json = await (await fetch('<url>')).json();
+    setCoins(json);
+  };
+
+  useEffect(() => {
+    getCoins();
+  }, []);
+
+  return (
+    <select>
+      {coins.map((coin) => (
+        <option>{coin.name}</option>
+      ))}
+    </select>
+  );
+}
+```
+
+## map과 props
+
+key는 map안에서 component들을 render할 때 사용
+
+```js
+<div>
+  {movies.map((movie) => (
+    <Movie key={movie.id} id={movie.id} />
+  ))}
+</div>
+```
