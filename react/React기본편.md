@@ -6,12 +6,26 @@
 `npm start` html에서 open with live server와 같이 미리보기같은 기능  
 `npm i prop-types` prop-type변경에 warning을 주는 기능(이때 i는 install의 약자  
 `npm install react-router-dom` React Router을 사용  
+`npm install sass --save` .css파일의 확장자 .scss로 바꾸기
 `npm i gh-pages` 결과물은 github pages에 업로드할 수 있게 해주는 패키지
 
 ## why react?
 
 바닐라 자바스크립트를 쓴 브라우저는 노드정보가 바뀔때마다 노드트리를 처음부터 다시 생성(5단계에 걸쳐)  
-리액트는 가상돔을 사용해서 우리 시아에 보이는 부분만 수정하고 몯ㄴ 업데이트가 끝나면 일괄로 합쳐서 실제 돔에 던져준다
+리액트는 가상돔을 사용해서 우리 시야에 보이는 부분만 수정하고 업데이트가 끝나면 일괄로 합쳐서 실제 돔에 던져준다(batch update)
+
+## 리액트의 가상돔(virtaul DOM)
+
+**DOM(Document Object Model )** - 웹페이지에 들어가있는 htmlElements를 트리형태의 구조로 표현한것  
+**virtual DOM** - 실제돔의 복사본이라 생각, 자바스크립트 객체형태로 메모리안에 저장되어 있다, 브라우저에 직접접근하지 않는다
+
+그럼 리액트에서 가상돔은 어떻게 움직일까??  
+리액트는 두가지 가상돔을 가지고 있다 첫째->렌더링이전 화면 구조를 나타내는 가상돔 둘째-> 렌더링 이후에 보이게될 화면구조를 나타내는 가상돔  
+상태값이 변화하면 _두 가상돔 사이에 딱 변한 부분만 찾아내서 렌더링(diffing)_ 하기 때문에 모든트리를 확인해서 렌더링하는 방식보다 빠르게 렌더링이 가능하다  
+이렇게 변경된 내용을 한번에 실제 돔에 던져누는 작업을 batch update라고 한다
+
+즉, Diffing을 통해서 변경된 부분들을 파악한 이후에 리액트는 Batch update를 수행함으로 실제 DOM에 한번에 적용시켜준다  
+이러한 과정을 Reconsiliation,재조정이라고 한다
 
 ## basic of react
 
@@ -191,6 +205,25 @@ function App() {
 ```
 
   <br/>
+
+## ForwardRef
+
+자녀컴포넌트에게 useRef={}를 전달할 수 있다
+
+```js
+//첫번째방법
+const 자녀콤퍼넌트=(props,ref)=>{
+  return <input ref={ref}/>
+}
+export default forwordRef(자녀콤포넌트)
+
+//두번째방법
+const 자녀콤퍼넌트=forwardRef((props,ref))=>{
+  return <input ref={ref}/>
+}
+export default 자녀콤포넌트
+
+```
 
 ## react router
 
