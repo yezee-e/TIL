@@ -5,9 +5,11 @@
 `npx create-react-app my-app` react app설치(my-app 폴더에 개발환경을 세팅하겠다는 뜻)  
 `npm start` html에서 open with live server와 같이 미리보기같은 기능  
 `npm i prop-types` prop-type변경에 warning을 주는 기능(이때 i는 install의 약자  
+`npm install` github에서 clone해온 raeact는 modlue이 빠져있다(모듈생성)  
 `npm install react-router-dom` React Router을 사용  
 `npm install sass --save` .css파일의 확장자 .scss로 바꾸기
-`npm i gh-pages` 결과물은 github pages에 업로드할 수 있게 해주는 패키지
+`npm i gh-pages` 결과물은 github pages에 업로드할 수 있게 해주는 패키지  
+`npm install --save styled-components`
 
 ## why react?
 
