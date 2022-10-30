@@ -208,6 +208,16 @@ function App() {
 
   <br/>
 
+## 동적인 UI 만드는 step
+
+1. html css로 미리 디자인완성
+2. ui의 현재 상태를 state로 저장
+3. state에 따라 ui가 어떻게 보일지 작성
+
+## event
+
+`e.stopPropagation()` 상위 html로 퍼지는 이벤트버블링을 막고 싶을 때
+
 ## ForwardRef
 
 자녀컴포넌트에게 useRef={}를 전달할 수 있다
@@ -330,6 +340,36 @@ package.json안에있는 "scripts"안에 deploy와 predeploy를 작성한다
 `"deploy":"gh-pages -d build"`
 `"predeploy":"npm run build"`
 (npm run build를 실행하면 Node.js가 predeploy를 먼저 실행시켜준다,즉 build가 없다면 먼저 만들고 deploy를 실행시켜준다)
+
+## class 문법
+
+```js
+class modal extends React.Component {
+  constructor(props) {
+    super(props);
+    //state만드는방법
+    this.state = {
+      name: 'kim',
+      age: 20,
+    };
+  }
+  render() {
+    return (
+      <div>
+        //state사용방법 안녕{this.state.name}
+        <button
+          onClick={() => {
+            this.setState({ age: 21 });
+          }}
+        >
+          버튼
+        </button> //state변경하는방법
+        <div>프롭스{this.props.프롭스이름}</div>
+      </div>
+    );
+  }
+}
+```
 
 ## 알아두면 짱 유용할껄??
 
